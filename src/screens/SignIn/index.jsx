@@ -85,17 +85,6 @@ export default function SignIn() {
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    //onPress={() => onSignInPress()}
-                    disabled={loading ? true : false}
-                    style={styles.socialButtons}
-                >
-                    <Text><Entypo name="facebook" size={18} color="#4D4D4D" /></Text>
-                    <Text style={styles.socialTexts}>
-                        Facebook
-                    </Text>
-                </TouchableOpacity>
-
             </View>
             <View style={styles.linkContainer}>
                 <Text style={styles.texts}>Ainda não tem conta? </Text>

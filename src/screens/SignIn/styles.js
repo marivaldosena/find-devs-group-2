@@ -66,6 +66,15 @@ texts: {
         backgroundColor: '#2D9135',
         borderRadius: 6,
         marginBottom: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
     },
     links: {
         textDecorationLine: 'underline',
@@ -90,14 +99,22 @@ texts: {
         color: '#4D4D4D',
         height: 56,
         fontFamily: 'Poppins_700Bold',
-        width: '48%',
+        width: '100%',
         backgroundColor: '#E1E1E6',
         paddingVertical:10,
         borderRadius: 6,
         alignItems:'center',
         justifyContent:'center',
         flexDirection:'row',
-   
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
     },
     socialTexts:{
         color: '#4D4D4D',
