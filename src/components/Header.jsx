@@ -22,7 +22,7 @@ export function Header() {
   return (
     <View style={styles.container}>
         <HeaderLogo/>
-        <Entypo name="log-out" size={20} color="#E1E1E6" onPress={()=> signOut()}/>
+        <Entypo name="home" size={20} color="#E1E1E6" onPress={()=> navigate('Home')}/>
     </View>
   );
 }
