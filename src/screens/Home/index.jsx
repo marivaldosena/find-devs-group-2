@@ -6,7 +6,7 @@ import { CardDev } from '../../components/CardDev';
 import { useNavigation } from '@react-navigation/native';
 import { Header } from '../../components/Header';
 
-import { listDevelopers } from '../../services/devApi'
+import DevApi from '../../services/devApi'
 
 
 export default function Home() {
@@ -15,26 +15,20 @@ export default function Home() {
 
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(false)
-  const [devs, setDevs] = useState(listDevelopers)
-
-  const devEx = {
-    id: 5,
-    name: "Junior da Silva",
-    stack: "React",
-    category: "Front-end",
-    state: "São Paulo",
-    photo: "https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/2021/01/Sam-CF.jpg",
-    description: "Desenvolvedor a x anos",
-
-  }
+  const [devs, setDevs] = useState()
 
 
   useEffect(() => {
-    if (!devs) {
-      return
+    async function getDevs(){
+      try {
+      const dev2 = await DevApi.listDevelopers()
+      setDevs(dev2)
+      } catch (error) {
+        
+      }
     }
-    console.log(devs)
-  }, [devs])
+    getDevs()
+  }, [])
 
   return (
     <>
@@ -81,13 +75,22 @@ export default function Home() {
             </Text>
           </TouchableOpacity>
           <CardDev
-            id={devEx.id}
-            name={devEx.name}
-            stack={devEx.stack}
-            category={devEx.category}
-            state={devEx.state}
-            photo={devEx.photo}
-            description={devEx.description}
+            id={devs[0].id}
+            name={devs[0].name}
+            stack={devs[0].stack}
+            category={devs[0].category}
+            state={devs[0].state}
+            photo={devs[0].photo}
+            description={devs[0].description}
+          />
+          <CardDev
+            id={devs[1].id}
+            name={devs[1].name}
+            stack={devs[1].stack}
+            category={devs[1].category}
+            state={devs[1].state}
+            photo={devs[1].photo}
+            description={devs[1].description}
           />
 
 

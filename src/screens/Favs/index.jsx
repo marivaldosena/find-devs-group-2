@@ -1,19 +1,14 @@
-import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Alert, FlatList } from 'react-native';
-import styles from './styles'
-import { Auth } from 'aws-amplify'
 import { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { AntDesign, Entypo, FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { Header } from '../../components/Header';
-import { useSelector, useDispatch } from 'react-redux'
-import { favStateData, addNewFavorite, removeFavorite } from '../../store/modules/favorites/reducer'
+import { Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import { CardDev } from '../../components/CardDev';
+import { Header } from '../../components/Header';
+import { favStateData } from '../../store/modules/favorites/reducer';
+import styles from './styles';
 
 export default function Favs() {
 
-    const [username, setUser] = useState('')
-    const [code, setCode] = useState('')
-    const [password, setPassword] = useState('')
+
     const [loading, setLoading] = useState(false)
     const favorite = useSelector(favStateData);
 

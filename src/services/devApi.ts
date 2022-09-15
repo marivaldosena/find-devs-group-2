@@ -66,7 +66,7 @@ const _getDeveloper = (
     }
 }
 
-export {
+export default {
   listDevelopers,
   findDeveloperById
 }
