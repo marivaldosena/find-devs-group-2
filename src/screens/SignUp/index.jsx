@@ -49,8 +49,7 @@ export default function SignUp() {
 
                 <View style={styles.inputContainer}>
                     <View style={styles.icon}>
-                        <FontAwesome5
-                            name="user" size={24} color="#EEE" />
+                        <Ionicons name="happy-outline" size={24} color="#EEE" />
                     </View>
                     <TextInput
                         autoCompleteType='off'

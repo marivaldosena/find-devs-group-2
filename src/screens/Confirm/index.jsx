@@ -97,7 +97,7 @@ export default function Confirm() {
             <TouchableOpacity
                 onPress={() => onResendPress()}
                 disabled={loading ? true : false}
-                style={styles.buttons}
+                style={styles.buttonsgray}
             >
                 <Text style={styles.texts}>
                     {loading ? 'Carregando...' : 'Reenviar Código'}

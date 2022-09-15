@@ -1,8 +1,7 @@
-import { Poppins_100Thin, Poppins_200ExtraLight, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins'
+import { Poppins_100Thin, Poppins_200ExtraLight, Poppins_500Medium } from '@expo-google-fonts/poppins'
 import { StyleSheet, Dimensions, } from 'react-native'
 
 export default StyleSheet.create({
-
     container: {
         backgroundColor: '#202024',
         width: Dimensions.get('window').width,
@@ -26,7 +25,7 @@ export default StyleSheet.create({
         backgroundColor: '#121214',
         color: 'white',
         padding: 10,
-        width: '91%',
+        width: '90.5%',
         marginBottom: 20,
         marginLeft: 15,
         borderRadius: 6,
@@ -38,6 +37,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'flex-start',
         marginLeft: 20,
+        marginBottom: -20,
     },
     title: {
         fontFamily: 'Poppins_400Regular',
@@ -154,5 +154,4 @@ export default StyleSheet.create({
         fontSize: 12,
         color: '#916134',
     },
-
 })

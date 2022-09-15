@@ -1,42 +1,44 @@
+import { Poppins_100Thin, Poppins_200ExtraLight } from '@expo-google-fonts/poppins'
 import { StyleSheet, Dimensions, } from 'react-native'
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: '#121214',
+        backgroundColor: '#202024',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
         alignItems: 'center',
-        justifyContent: 'space-between',
+        paddingVertical:20,
         flex: 1,
-        paddingVertical:40,
     },
 
     form: {
-        marginTop: 40,
+        marginTop: 20,
         marginBottom: 100,
     },
     inputContainer:{
-        flexDirection:'row'
+        flexDirection:'row',
+        textAlign: 'center',
+        justifyContent: 'center',
+        marginLeft: -20
     },
     inputs: {
-        backgroundColor: 'black',
+        backgroundColor: '#121214',
         color: 'white',
-        padding: 10,
-        width: Dimensions.get('window').width - 80,
+        paddingVertical: 10,
+        width: '90%',
         marginBottom: 20,
-        borderRadius: 5,
+        borderRadius: 6,
         fontFamily: 'Poppins_400Regular',
         fontSize: 12,
-        paddingLeft: 45,
-        translateX: -10,
-    },
+        padding: 50,
+},
     title: {
         fontFamily: 'Poppins_400Regular',
         fontSize: 20,
         color: 'white',
         marginBottom: 10,
         alignSelf: 'flex-start',
-        paddingLeft: 40,
+        paddingLeft: 20,
 
     },
     texts: {
@@ -46,65 +48,21 @@ export default StyleSheet.create({
         fontSize: 12,
         textAlign: 'center'
     },
-    textLink: {
-        textDecorationLine: 'underline',
-        fontFamily: 'Poppins_400Regular',
-        color: 'white',
-        margin: 20,
-        fontSize: 12,
-        textAlign: 'center'
-    },
-    socialContainer: {
-        flexDirection: 'row',
-        width: Dimensions.get('window').width - 50,
-        justifyContent: 'space-evenly'
+
+    buttons: {
+
+        width: '90%',
+        height: 56,
+        textAlign: 'center',
+        justifyContent:'center',
+        backgroundColor: '#2D9135',
+        borderRadius: 6,
 
     },
-    buttons: {
-        width: '80%',
-        height: 60,
-        textAlign: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#2D9135',
-        borderRadius: 10,
-        marginBottom: 20
-    },
-    links: {
-        textDecorationLine: 'underline',
-        color: '#5BDE66',
-        fontFamily: 'Poppins_400Regular',
-        fontSize: 12,
-    },
-    linkContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        textAlign: 'center',
-        justifyContent: 'center',
-        marginBottom: 40
-    },
-    socialButtons:{
-        color: '#4D4D4D',
-        fontFamily: 'Poppins_700Bold',
-        width: '40%',
-        backgroundColor: '#E1E1E6',
-        
-        paddingVertical:10,
-        borderRadius: 10,
-        alignItems:'center',
-        justifyContent:'center',
-        flexDirection:'row',
-        marginVertical:20
-        
-    },
-    socialTexts:{
-        color: '#4D4D4D',
-        fontFamily: 'Poppins_700Bold',
-        marginLeft:10,
-        fontSize: 12
-    },
+
     icon:{
-        translateX: 25,
+        translateX: 35,
         translateY: 10,
         zIndex: 2,
-    }
+    },
 })

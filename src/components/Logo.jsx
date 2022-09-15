@@ -18,14 +18,14 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   text1:{
-    fontSize: 45,
+    fontSize: 50,
     letterSpacing: -5,
     fontWeight: '300',
     fontFamily: 'Poppins_400Regular',
     color: 'white'
   },
   text2:{
-    fontSize: 45,
+    fontSize: 50,
     fontWeight: '700',
     letterSpacing: -3,
     color: '#5BDE66',

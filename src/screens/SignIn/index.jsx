@@ -59,7 +59,6 @@ export default function SignIn() {
                         secureTextEntry={true}
                     />
                 </View>
-
             </View>
 
             <TouchableOpacity
@@ -72,13 +71,6 @@ export default function SignIn() {
                 </Text>
             </TouchableOpacity>
 
-
-            <TouchableOpacity>
-                <Text
-                    onPress={() => navigate('ForgotPassword')}
-                    style={styles.textLink}>Esqueci minha senha
-                </Text>
-            </TouchableOpacity>
             <Text style={styles.texts}>Acesse também com:</Text>
             <View style={styles.socialContainer}>
 
@@ -87,7 +79,7 @@ export default function SignIn() {
                     disabled={loading ? true : false}
                     style={styles.socialButtons}
                 >
-                    <Text><AntDesign name="google" size={18} /></Text>
+                    <Text><AntDesign name="google" size={18}  color="#4D4D4D"  /></Text>
                     <Text style={styles.socialTexts}>
                         Google
                     </Text>
@@ -98,7 +90,7 @@ export default function SignIn() {
                     disabled={loading ? true : false}
                     style={styles.socialButtons}
                 >
-                    <Text><Entypo name="facebook" size={18} /></Text>
+                    <Text><Entypo name="facebook" size={18} color="#4D4D4D" /></Text>
                     <Text style={styles.socialTexts}>
                         Facebook
                     </Text>
@@ -107,8 +99,8 @@ export default function SignIn() {
             </View>
             <View style={styles.linkContainer}>
                 <Text style={styles.texts}>Ainda não tem conta? </Text>
-                <TouchableOpacity >
 
+                <TouchableOpacity >
                     <Text
                         onPress={() => navigate('SignUp')}
                         style={styles.links}>Cadastre-se
@@ -116,6 +108,13 @@ export default function SignIn() {
                 </TouchableOpacity>
 
             </View>
+
+            <TouchableOpacity>
+                <Text
+                    onPress={() => navigate('ForgotPassword')}
+                    style={styles.textLink}>Esqueci minha senha
+                </Text>
+            </TouchableOpacity>
 
         </View>
     )

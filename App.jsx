@@ -3,8 +3,8 @@ import Amplify from 'aws-amplify';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import awsconfig from './src/aws-exports';
 import Navigation from './src/navigation';
-
-
+import { Provider } from 'react-redux';
+import store from './src/store'
 
 Amplify.configure(awsconfig)
 
@@ -12,7 +12,7 @@ Amplify.configure(awsconfig)
 const App = () => {
 
 
-  
+
   let [fontsLoaded] = useFonts({
     Poppins_400Regular, Poppins_500Medium, Poppins_700Bold
   });
@@ -22,14 +22,16 @@ const App = () => {
   }
 
   return (
-    
+
     <View style={styles.container}>
       <StatusBar
-      barStyle='light-content'
-      translucent={true}
-      backgroundColor='transparent'
-    />
-      <Navigation />
+        barStyle='light-content'
+        translucent={true}
+        backgroundColor='transparent'
+      />
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
     </View>
   );
 }

@@ -11,7 +11,7 @@ const listCategories = async (): Promise<ICategory[]> => {
   }
 }
 
-const findCategoryById = async (id: number): Promise<ICategory?> => {
+const findCategoryById = async (id: number): Promise<ICategory | null> => {
   try {
     const response = await api.get<ICategory>(`/category/${id}`)
     return await response.data;
@@ -20,7 +20,7 @@ const findCategoryById = async (id: number): Promise<ICategory?> => {
   }
 }
 
-const createCategory = async (category: ICategory): Promise<ICategory?> => {
+const createCategory = async (category: ICategory): Promise<ICategory | null> => {
   try {
     const response = await api.post(`/category`, category);
     return await response.data;
@@ -29,7 +29,7 @@ const createCategory = async (category: ICategory): Promise<ICategory?> => {
   }
 }
 
-const updateCategory = async (id: number, newCategory: string): Promise<ICategory?> => {
+const updateCategory = async (id: number, newCategory: string): Promise<ICategory | null> => {
   try {
     const response = await api.put(`/category/${id}`, { id, name: newCategory });
     return await response.data;

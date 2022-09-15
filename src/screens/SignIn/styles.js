@@ -2,49 +2,51 @@ import { StyleSheet, Dimensions, } from 'react-native'
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: '#121214',
+        backgroundColor: '#202024',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
         alignItems: 'center',
-        justifyContent: 'center',
         flex: 1,
     },
 
     form: {
-        marginTop: 40,
+        marginTop: 20,
+        marginBottom: 100,
     },
     inputContainer:{
-        flexDirection:'row'
+        flexDirection:'row',
+        textAlign: 'center',
+        justifyContent: 'center',
+        marginLeft: -20
     },
     inputs: {
-        backgroundColor: 'black',
+        backgroundColor: '#121214',
         color: 'white',
-        padding: 10,
-        width: Dimensions.get('window').width - 80,
+        paddingVertical: 10,
+        width: '90%',
         marginBottom: 20,
-        borderRadius: 5,
+        borderRadius: 6,
         fontFamily: 'Poppins_400Regular',
         fontSize: 12,
-        paddingLeft: 45,
-        translateX: -10,
-    },
-    title: {
-        fontFamily: 'Poppins_700Bold',
-        fontSize: 20,
-        color: 'white',
-        marginBottom: 10
+        padding: 50,
+},
+title: {
+    fontFamily: 'Poppins_700Bold',
+    fontSize: 20,
+    color: 'white',
+    marginTop: 20,
 
-    },
-    texts: {
-        fontFamily: 'Poppins_400Regular',
-        color: 'white',
-        margin: 20,
-        fontSize: 12,
-        textAlign: 'center'
-    },
+},
+texts: {
+    fontFamily: 'Poppins_400Regular',
+    color: 'white',
+   
+    fontSize: 12,
+    textAlign: 'center'
+},
     textLink: {
         textDecorationLine: 'underline',
-        fontFamily: 'Poppins_400Regular',
+        fontFamily: 'Poppins_700Bold',
         color: 'white',
         margin: 20,
         fontSize: 12,
@@ -57,18 +59,18 @@ export default StyleSheet.create({
 
     },
     buttons: {
-        width: '80%',
-        height: 60,
+        width: '90%',
+        height: 56,
         textAlign: 'center',
-        justifyContent: 'center',
+        justifyContent:'center',
         backgroundColor: '#2D9135',
-        borderRadius: 10,
-        marginBottom: 20
+        borderRadius: 6,
+        marginBottom: 10,
     },
     links: {
         textDecorationLine: 'underline',
         color: '#5BDE66',
-        fontFamily: 'Poppins_400Regular',
+        fontFamily: 'Poppins_700Bold',
         fontSize: 12,
     },
     linkContainer: {
@@ -76,21 +78,26 @@ export default StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         justifyContent: 'center',
-        marginBottom: 40
+    },
+    socialContainer: {
+        width: '90%',
+        flexDirection:'row',
+        textAlign: 'center',
+        justifyContent: 'space-between',
+        marginVertical: 10,
     },
     socialButtons:{
         color: '#4D4D4D',
+        height: 56,
         fontFamily: 'Poppins_700Bold',
-        width: '40%',
+        width: '48%',
         backgroundColor: '#E1E1E6',
-        
         paddingVertical:10,
-        borderRadius: 10,
+        borderRadius: 6,
         alignItems:'center',
         justifyContent:'center',
         flexDirection:'row',
-        marginVertical:20
-        
+   
     },
     socialTexts:{
         color: '#4D4D4D',
@@ -98,9 +105,10 @@ export default StyleSheet.create({
         marginLeft:10,
         fontSize: 12
     },
-    icon:{
-        translateX: 25,
-        translateY: 10,
-        zIndex: 2,
-    }
+     icon:{
+            translateX: 35,
+            translateY: 10,
+            zIndex: 2,
+        },
+    
 })

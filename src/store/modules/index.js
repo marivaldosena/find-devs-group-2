@@ -1,11 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import favData from './modules/favorites/reducer'
-
+import favData from './favorites/reducer'
 
 const store = configureStore({
-    reducer: {
-        favorite: favData
+    reducer:{
+        favData: favData
     }
 })
 
