@@ -30,10 +30,10 @@ export default function Favs() {
                 <View style={styles.hello}>
                     <Text style={styles.title}>Favoritos</Text>
                 </View>
-                {favorite === [] &&
-                <View style={styles.container}>
+                {favorite == '' &&
+                
                 <Text style={styles.texts}>Não há favoritos salvos.</Text>
-                </View>
+                
                 }
                 {favorite.map((item,index)=>(
                     <CardDev
