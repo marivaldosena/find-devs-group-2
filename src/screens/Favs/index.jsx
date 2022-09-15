@@ -19,9 +19,7 @@ export default function Favs() {
   const onResendPress = async () => {
       if (loading) {
           return
-      }
-      
-
+      }    
   }
 
   return (
