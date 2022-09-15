@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Logo } from '../../components/Logo';
 import { AntDesign, Entypo, FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { Header } from '../../components/Header';
+import { HeaderSignIn } from '../../components/HeaderSignIn';
 
 
 export default function SignUp() {
@@ -41,7 +41,7 @@ export default function SignUp() {
 
     return (
         <>
-        <Header/>
+        <HeaderSignIn/>
         <View style={styles.container}>
             
             <Text style={styles.title}>Faça seu cadastro!</Text>

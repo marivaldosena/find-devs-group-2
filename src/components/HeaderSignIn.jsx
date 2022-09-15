@@ -5,7 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Auth, Hub } from 'aws-amplify'
 
-export function Header() {
+export function HeaderSignIn() {
 
   async function signOut(){
     try {
@@ -22,7 +22,7 @@ export function Header() {
   return (
     <View style={styles.container}>
         <HeaderLogo/>
-        <Entypo name="log-out" size={20} color="#E1E1E6" onPress={()=> signOut()}/>
+        <Entypo name="log-out" size={20} color="#E1E1E6" onPress={() => navigate('SignIn')}/>
     </View>
   );
 }

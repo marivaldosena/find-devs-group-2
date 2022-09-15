@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, Entypo, FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Logo } from '../../components/Logo';
-import { Header } from '../../components/Header';
+import { HeaderSignIn } from '../../components/HeaderSignIn';
 
 export default function Reset() {
 
@@ -52,7 +52,7 @@ export default function Reset() {
 
     return (
         <>
-            <Header />
+            <HeaderSignIn />
             <View style={styles.container}>
 
                 <Text style={styles.title}>Resetar senha</Text>
