@@ -10,6 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 src/aws-exports.js
+yarn.lock
 # macOS
 .DS_Store
 
