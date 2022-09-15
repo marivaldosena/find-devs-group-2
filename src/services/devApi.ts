@@ -19,12 +19,13 @@ const listDevelopers = async (): Promise<IDeveloper[]> => {
 
       developers.push(_getDeveloper(item, category, stack, state));
     }
-
+    
     return developers;
   } catch (err) {
     return [];
   }
 }
+
 
 const findDeveloperById = async (id: number): Promise<IDeveloper | null> => {
   try {
@@ -65,7 +66,7 @@ const _getDeveloper = (
     }
 }
 
-export default {
+export {
   listDevelopers,
   findDeveloperById
 }
