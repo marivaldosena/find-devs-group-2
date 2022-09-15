@@ -2,11 +2,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
-import { Header } from '../../components/Header';
 import { CardDev } from '../../components/CardDev';
 import { useSelector, useDispatch } from 'react-redux'
 import { favStateData, addNewFavorite, removeFavorite } from '../../store/modules/favorites/reducer'
 import { useNavigation } from '@react-navigation/native';
+import { Header } from '../../components/Header';
 
 
 export default function Home() {
@@ -40,12 +40,12 @@ export default function Home() {
   return (
     <>
 
-      <Header />
+      <Header onpress='signout'/>
 
       <View style={styles.container}>
         <View style={styles.hello}>
           <Text style={styles.title}>Olá,</Text>
-          <Text style={styles.titlebold}>Dev</Text>
+          <Text style={styles.titleBold}>Dev</Text>
           <Text style={styles.title}>!</Text>
         </View>
 
@@ -80,24 +80,32 @@ export default function Home() {
 
         <View style={styles.card}>
           <View style={styles.profile}>
-            <View style={styles.cardicon}>
-              <Ionicons style={styles.cardicon} name="person-circle-outline" size={40} color="#EEE" />
+            <View style={styles.cardIcon}>
+              <Ionicons style={styles.cardIcon} name="person-circle-outline" size={40} color="#EEE" />
             </View>
           </View>
 
-          <View style={styles.cardinfo}>
+          <View style={styles.cardInfo}>
 
-            <Text style={styles.titleboldfav}>Fernanda Peters</Text>
-            <View style={styles.cardstacks}>
-              <Text style={styles.javascriptstack}>JavaScript, </Text>
-              <Text style={styles.reactstack}>React, </Text>
-              <Text style={styles.reactnativestack}>React Native</Text>
+            <Text style={styles.titleBoldFav}>Fernanda Peters</Text>
+
+            <View style={styles.infoDev}>
+              <Text style={styles.texts}>FullStack</Text>
+              <Text style={styles.texts}> | </Text>
+              <Text style={styles.texts}>Santa Catarina</Text>
             </View>
+            
+            <View style={styles.cardStacks}>
+              <Text style={styles.javascriptStack}>JavaScript, </Text>
+              <Text style={styles.reactStack}>React, </Text>
+              <Text style={styles.reactnativeStack}>React Native</Text>
+            </View>
+
 
           </View>
       
           <TouchableOpacity>
-            <Ionicons style={styles.iconfav}
+            <Ionicons style={styles.iconFav}
               onPress={() => {
                 if (!favorite.some(item => item.id === card.id)) {
                   addFavorite(card)

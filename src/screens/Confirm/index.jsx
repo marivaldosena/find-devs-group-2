@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Logo } from '../../components/Logo';
 import { AntDesign, Entypo, FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { HeaderSignIn } from '../../components/HeaderSignIn';
+import { Header } from '../../components/Header';
 
 export default function Confirm() {
 
@@ -51,7 +51,7 @@ export default function Confirm() {
 
     return (
         <>
-        <HeaderSignIn/>
+        <Header onpress='signin'/>
         <View style={styles.container}>
             
             <Text style={styles.title}>Confirme seu E-mail</Text>

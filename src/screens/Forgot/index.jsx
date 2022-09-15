@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Logo } from '../../components/Logo';
 import { AntDesign, Entypo, FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { HeaderSignIn } from '../../components/HeaderSignIn';
+import { Header } from '../../components/Header';
 
 export default function Forgot() {
 
@@ -49,7 +49,7 @@ export default function Forgot() {
 
     return (
         <>
-        <HeaderSignIn/>
+        <Header onpress='signin'/>
         <View style={styles.container}>
             
             <Text style={styles.title}>Esqueci a senha</Text>

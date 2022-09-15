@@ -47,7 +47,7 @@ export default StyleSheet.create({
         alignSelf: 'flex-start',
         
     },
-    titlebold: {
+    titleBold: {
         fontFamily: 'Poppins_700Bold',
         fontSize: 20,
         color: 'white',
@@ -58,9 +58,8 @@ export default StyleSheet.create({
     texts: {
         fontFamily: 'Poppins_400Regular',
         color: 'white',
-        margin: 10,
         fontSize: 12,
-        textAlign: 'center'
+
     },
     textLink: {
         textDecorationLine: 'underline',
@@ -75,11 +74,21 @@ export default StyleSheet.create({
         width: '90%',
         height: 56,
         textAlign: 'center',
+        alignItems: 'center',
         justifyContent:'center',
         backgroundColor: '#DE8F45',
         borderRadius: 6,
         marginBottom: 20,
         marginTop: -80,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
     },
         
     icon:{
@@ -97,9 +106,17 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         padding: 10,
         alignItems: 'center',
-        elevation: 5,
         flexDirection: 'row',
         marginBottom: -10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
     },
     profile: {
         width: 80,
@@ -110,47 +127,50 @@ export default StyleSheet.create({
         borderColor: '#4d4d4d',
         alignItems: 'center',
     },
-    cardicon:{
+    cardIcon:{
         fontSize: 70,
         color: '#000',
         justifyContent: 'center',
     },
-    cardinfo:{
-
+    cardInfo:{
+        flex: 1,
+        marginLeft: 10,
     },
-    titleboldfav: {
+    titleBoldFav: {
         fontFamily: 'Poppins_700Bold',
         fontSize: 20,
         color: 'white',
     },
-    cardstacks:{
+    cardStacks:{
         flexDirection: 'row',
-        marginTop: -5,
     },
-    iconfav:{
+    infoDev:{
+        flexDirection: 'row',
+    },
+    iconFav:{
         marginTop: -40,
     },
-    javascriptstack:{
+    javascriptStack:{
         fontSize: 12,
         color: '#DE8F45',
     },
-    reactstack:{
+    reactStack:{
         fontSize: 12,
         color: '#5BFE66',
     },
-    reactnativestack:{
+    reactnativeStack:{
         fontSize: 12,
         color: '#2D9135',
     },
-    nodestack:{
+    nodeStack:{
         fontSize: 12,
         color: '#4E31FC',
     },
-    csharpstack:{
+    csharpStack:{
         fontSize: 12,
         color: '#7953E0',
     },
-    phytonstack:{
+    phytonStack:{
         fontSize: 12,
         color: '#916134',
     },
