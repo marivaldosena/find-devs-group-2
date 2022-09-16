@@ -5,7 +5,7 @@ import styles from './styles';
 import { CardDev } from '../../components/CardDev';
 import { useNavigation } from '@react-navigation/native';
 import { Header } from '../../components/Header';
-
+import { Auth } from 'aws-amplify'
 import DevApi from '../../services/devApi'
 import { ModalDetails } from '../../components/ModalDetails';
 
@@ -18,6 +18,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [devs, setDevs] = useState()
   const [modalVisible, setModalVisible] = useState(false)
+  const [username,setUsername] = useState('Dev')
   const [selected, setSelected] = useState({
     id:'',
     name: '',
@@ -37,6 +38,15 @@ export default function Home() {
       }
     }
     getDevs()
+
+    async function getUserName(){
+
+      const user = await Auth.currentUserInfo()
+      .then(response => setUsername(response.attributes.name))
+      
+    }
+  
+    getUserName()
   }, [])
 
   return (
@@ -51,7 +61,7 @@ export default function Home() {
         <View style={styles.container}>
           <View style={styles.hello}>
             <Text style={styles.title}>Olá,</Text>
-            <Text style={styles.titleBold}>Dev</Text>
+            <Text style={styles.titleBold}>{username}</Text>
             <Text style={styles.title}>!</Text>
           </View>
 
