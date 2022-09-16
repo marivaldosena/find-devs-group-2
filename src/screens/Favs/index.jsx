@@ -10,6 +10,15 @@ import styles from './styles';
 
 export default function Favs() {
 
+    const [selected, setSelected] = useState({
+        id: '',
+        name: '',
+        stack: '',
+        category: '',
+        state: '',
+        photo: '',
+        description: '',
+    })
     const [modalVisible, setModalVisible] = useState(false)
     const [loading, setLoading] = useState(false)
     const favorite = useSelector(favStateData);
@@ -24,6 +33,26 @@ export default function Favs() {
 
     return (
         <>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <ModalDetails
+                    id={selected.id}
+                    name={selected.name}
+                    stack={selected.stack}
+                    category={selected.category}
+                    state={selected.state}
+                    photo={selected.photo}
+                    description={selected.description}
+
+                    close={() => setModalVisible(false)}
+                />
+            </Modal>
             <Header onpress='home' />
             <View style={styles.container}>
                 <View style={styles.hello}>
@@ -36,24 +65,7 @@ export default function Favs() {
                 }
                 {favorite.map((item, index) => (
                     <>
-                        <Modal
-                            animationType="slide"
-                            transparent={true}
-                            visible={modalVisible}
-                            onRequestClose={() => {
-                                setModalVisible(!modalVisible);
-                            }}
-                        >
-                            <ModalDetails
-                                name={item.name}
-                                stack={item.stack}
-                                category={item.category}
-                                state={item.state}
-                                photo={item.photo}
-                                description={item.description}
-                                close={() => setModalVisible(false)}
-                            />
-                        </Modal>
+
                         <CardDev
                             key={item.id}
                             id={item.id}
@@ -63,7 +75,19 @@ export default function Favs() {
                             state={item.state}
                             photo={item.photo}
                             description={item.description}
-                            onpress={() => setModalVisible(true)}
+                            onpress={() => {
+                                setModalVisible(true)
+                                setSelected({
+                                    id: item.id,
+                                    name: item.name,
+                                    stack: item.stack,
+                                    category: item.category,
+                                    state: item.state,
+                                    photo: item.photo,
+                                    description: item.description
+                                })
+
+                            }}
                         />
                     </>
                 ))}

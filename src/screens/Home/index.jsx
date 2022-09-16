@@ -19,6 +19,7 @@ export default function Home() {
   const [devs, setDevs] = useState()
   const [modalVisible, setModalVisible] = useState(false)
   const [selected, setSelected] = useState({
+    id:'',
     name: '',
     stack: '',
     category: '',
@@ -91,6 +92,7 @@ export default function Home() {
             }}
           >
             <ModalDetails
+              id={selected.id}
               name={selected.name}
               stack={selected.stack}
               category={selected.category}
@@ -116,6 +118,7 @@ export default function Home() {
                 onpress={() => {
                   setModalVisible(true)
                   setSelected({
+                    id:item.id,
                     name: item.name,
                     stack: item.stack,
                     category: item.category,
