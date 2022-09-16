@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View, ActivityIndicator } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View, ActivityIndicator, FlatList } from 'react-native';
 import styles from './styles';
 import { CardDev } from '../../components/CardDev';
 import { useNavigation } from '@react-navigation/native';
@@ -19,12 +19,12 @@ export default function Home() {
 
 
   useEffect(() => {
-    async function getDevs(){
+    async function getDevs() {
       try {
-      const dev2 = await DevApi.listDevelopers()
-      setDevs(dev2)
+        const dev2 = await DevApi.listDevelopers()
+        setDevs(dev2)
       } catch (error) {
-        
+
       }
     }
     getDevs()
@@ -74,24 +74,23 @@ export default function Home() {
               {loading ? 'Carregando...' : 'Favoritos'}
             </Text>
           </TouchableOpacity>
-          <CardDev
-            id={devs[0].id}
-            name={devs[0].name}
-            stack={devs[0].stack}
-            category={devs[0].category}
-            state={devs[0].state}
-            photo={devs[0].photo}
-            description={devs[0].description}
+          <FlatList
+            data={devs}
+            contentContainerStyle={{alignItems:'center', width: '100%'}}
+            renderItem={({ item }) =>
+              <CardDev
+                id={item.id}
+                name={item.name}
+                stack={item.stack}
+                category={item.category}
+                state={item.state}
+                photo={item.photo}
+                description={item.description}
+              />}
+
+
           />
-          <CardDev
-            id={devs[1].id}
-            name={devs[1].name}
-            stack={devs[1].stack}
-            category={devs[1].category}
-            state={devs[1].state}
-            photo={devs[1].photo}
-            description={devs[1].description}
-          />
+
 
 
 
