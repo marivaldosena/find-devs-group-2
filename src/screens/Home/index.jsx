@@ -1,12 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View, ActivityIndicator, FlatList } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View, ActivityIndicator, FlatList, Modal } from 'react-native';
 import styles from './styles';
 import { CardDev } from '../../components/CardDev';
 import { useNavigation } from '@react-navigation/native';
 import { Header } from '../../components/Header';
 
 import DevApi from '../../services/devApi'
+import { ModalDetails } from '../../components/ModalDetails';
 
 
 export default function Home() {
@@ -16,8 +17,15 @@ export default function Home() {
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(false)
   const [devs, setDevs] = useState()
-
-
+  const [modalVisible, setModalVisible] = useState(false)
+  const [selected, setSelected] = useState({
+    name: '',
+    stack: '',
+    category: '',
+    state: '',
+    photo: '',
+    description: '',
+  })
   useEffect(() => {
     async function getDevs() {
       try {
@@ -74,10 +82,29 @@ export default function Home() {
               {loading ? 'Carregando...' : 'Favoritos'}
             </Text>
           </TouchableOpacity>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              setModalVisible(!modalVisible);
+            }}
+          >
+            <ModalDetails
+              name={selected.name}
+              stack={selected.stack}
+              category={selected.category}
+              state={selected.state}
+              photo={selected.photo}
+              description={selected.description}
+              close={() => setModalVisible(false)}
+            />
+          </Modal>
           <FlatList
             data={devs}
-            contentContainerStyle={{alignItems:'center', width: '100%'}}
+            contentContainerStyle={{ alignItems: 'center', width: '100%' }}
             renderItem={({ item }) =>
+
               <CardDev
                 id={item.id}
                 name={item.name}
@@ -86,14 +113,22 @@ export default function Home() {
                 state={item.state}
                 photo={item.photo}
                 description={item.description}
-              />}
+                onpress={() => {
+                  setModalVisible(true)
+                  setSelected({
+                    name: item.name,
+                    stack: item.stack,
+                    category: item.category,
+                    state: item.state,
+                    photo: item.photo,
+                    description: item.description
+                  })
 
+                }}
+              />
 
+            }
           />
-
-
-
-
 
         </View>}
 

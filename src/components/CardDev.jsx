@@ -30,7 +30,9 @@ export function CardDev(props) {
 }
 
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} 
+    onPress={props.onpress}
+    >
           <View style={styles.profile}>
             <View style={styles.cardIcon}>
             <Image 
@@ -75,10 +77,10 @@ export function CardDev(props) {
           
 
           name={isFavorite ? "star" : "star-outline"}
-          size={20} color="#DE8F45" />
+          size={26} color="#DE8F45" />
       </TouchableOpacity>
 
-    </View>
+    </TouchableOpacity>
   );
 }
 
