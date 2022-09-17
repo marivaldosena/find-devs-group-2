@@ -10,6 +10,7 @@ import DevApi from '../../services/devApi'
 import { ModalDetails } from '../../components/ModalDetails';
 
 
+
 export default function Home() {
 
   const navigate = useNavigation().navigate
