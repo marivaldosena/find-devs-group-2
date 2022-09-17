@@ -39,7 +39,7 @@ export function Header(props) {
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'e',
+        backgroundColor: '#29292E',
         width: Dimensions.get('window').width,
         height: 140,
         alignItems: 'center',
