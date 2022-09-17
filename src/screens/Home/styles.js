@@ -67,7 +67,17 @@ export default StyleSheet.create({
         color: 'white',
         margin: 20,
         fontSize: 12,
-        textAlign: 'center'
+        textAlign: 'center',
+    },
+    textSearch: {
+        textDecorationLine: 'underline',
+        fontFamily: 'Poppins_400Regular',
+        color: 'white',
+        marginTop: -18,
+        marginBottom: 20,
+        marginRight: 40,
+        fontSize: 12,
+        textAlign: 'right',
     },
     
     buttons: {
@@ -95,6 +105,11 @@ export default StyleSheet.create({
         translateX: -40,
         translateY: 15,
         zIndex: 2,
+    },
+    iconSearch:{
+        alignItems: 'flex-end',
+        marginRight: 20,
+        marginTop: -10,
     },
     card: {
         width: '90%',
