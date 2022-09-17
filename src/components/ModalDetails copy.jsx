@@ -1,64 +1,22 @@
 
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useSelector, useDispatch } from 'react-redux'
-import { favStateData, addNewFavorite, removeFavorite } from '../store/modules/favorites/reducer'
+import { favStateData } from '../store/modules/favorites/reducer'
+import { useSelector } from 'react-redux'
 
 
 
 
 export function ModalDetails(props) {
-
     const favorite = useSelector(favStateData);
-    const dispatch = useDispatch();
-
-    const addFavorite = (item) => {
-        dispatch(addNewFavorite(item));
-      }
-    
-      const removefavorite = (item) => {
-        dispatch(removeFavorite(item));
-      }
-    
-      const isFavorite = favorite.some(item => item.id === props.id)
-
-      const dev = {
-        category: props.category,
-        description: props.description,
-        id: props.id,
-        name: props.name,
-        photo: props.photo,
-        stack: props.stack,
-        state: props.state,
-    }
+    const isFavorite = favorite.some(item => item.id === props.id)
 
     return (
         <View style={styles.modal}>
             <View style={styles.cardmodal}>
 
                 <View style={styles.iconmodal}>
-
-                <TouchableOpacity
-      onPress={() => {
-
-        if (!favorite.some(item => item.id === props.id)) {
-          addFavorite(dev)
-          console.log(favorite)
-
-        }
-        else {
-          removefavorite(dev)
-          console.log(favorite)
-        }
-      }}
-      >
-        <Ionicons style={styles.iconFav}
-          
-
-          name={isFavorite ? "star" : "star-outline"}
-          size={26} color="#DE8F45" />
-      </TouchableOpacity>
-
+                    <Ionicons name={isFavorite ? "star" : "star-outline"} size={26} color="#EEE" />
                     <Ionicons style={styles.iconclose} name="ios-close" size={35} color="#EEE"
                         onPress={props.close}
                     />
@@ -116,7 +74,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 20,
-
     },
     cardmodal: {
         backgroundColor: '#121214',
@@ -124,7 +81,6 @@ const styles = StyleSheet.create({
         height: '95%',
         borderRadius: 6,
         alignItems: 'center',
-        
     },
     iconmodal: {
         padding: 20,

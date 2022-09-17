@@ -73,7 +73,7 @@ export function CardDev(props) {
         }
       }}
       >
-        <Ionicons style={styles.iconfav}
+        <Ionicons style={styles.iconFav}
           
 
           name={isFavorite ? "star" : "star-outline"}
