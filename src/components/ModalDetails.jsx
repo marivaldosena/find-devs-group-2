@@ -110,7 +110,7 @@ export function ModalDetails(props) {
 
 const styles = StyleSheet.create({
     modal: {
-        backgroundColor: 'transparent',
+        backgroundColor: 'rgba(32, 32, 36, .9)',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
         alignItems: 'center',
@@ -121,10 +121,10 @@ const styles = StyleSheet.create({
     cardmodal: {
         backgroundColor: '#121214',
         width: '90%',
-        height: '95%',
+        height: '85%',
         borderRadius: 6,
         alignItems: 'center',
-        
+        opacity: .995,
     },
     iconmodal: {
         padding: 20,
