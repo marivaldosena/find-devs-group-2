@@ -3,7 +3,7 @@ import { Text, View, Modal } from 'react-native';
 import { useSelector } from 'react-redux';
 import { CardDev } from '../../components/CardDev';
 import { Header } from '../../components/Header';
-import { ModalDetails } from '../../components/ModalFilter';
+import { ModalDetails } from '../../components/ModalDetails';
 import { favStateData } from '../../store/modules/favorites/reducer';
 import styles from './styles';
 
