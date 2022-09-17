@@ -1,64 +1,76 @@
-import { Ionicons } from '@expo/vector-icons';
-import { useEffect, useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View, ActivityIndicator, FlatList, Modal } from 'react-native';
-import styles from './styles';
-import { CardDev } from '../../components/CardDev';
-import { useNavigation } from '@react-navigation/native';
-import { Header } from '../../components/Header';
-import { Auth } from 'aws-amplify'
-import DevApi from '../../services/devApi'
-import { ModalDetails } from '../../components/ModalDetails';
+import { Ionicons } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  ActivityIndicator,
+  FlatList,
+  Modal,
+  Keyboard,
+} from "react-native";
+import styles from "./styles";
+import { CardDev } from "../../components/CardDev";
+import { useNavigation } from "@react-navigation/native";
+import { Header } from "../../components/Header";
+import { Auth } from "aws-amplify";
+import DevApi from "../../services/devApi";
+import { ModalDetails } from "../../components/ModalDetails";
 // import { ModalSearch } from '../../components/ModalSearch';
 
-
 export default function Home() {
+  const navigate = useNavigation().navigate;
 
-  const navigate = useNavigation().navigate
-
-  const [search, setSearch] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [devs, setDevs] = useState()
-  const [modalVisible, setModalVisible] = useState(false)
-  const [username,setUsername] = useState('Dev')
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [devs, setDevs] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [username, setUsername] = useState("Dev");
   const [selected, setSelected] = useState({
-    id:'',
-    name: '',
-    stack: '',
-    category: '',
-    state: '',
-    photo: '',
-    description: '',
-  })
+    id: "",
+    name: "",
+    stack: "",
+    category: "",
+    state: "",
+    photo: "",
+    description: "",
+  });
+
+  async function getDevs(filter) {
+    try {
+      const dev2 = await DevApi.listDevelopers(filter);
+      setDevs(dev2);
+    } catch (error) {}
+  }
+
   useEffect(() => {
-    async function getDevs() {
-      try {
-        const dev2 = await DevApi.listDevelopers()
-        setDevs(dev2)
-      } catch (error) {
+    getDevs();
 
-      }
+    async function getUserName() {
+      await Auth.currentUserInfo().then((response) => setUsername(response.attributes.name));
     }
-    getDevs()
 
-    async function getUserName(){
+    getUserName();
+  }, []);
 
-      const user = await Auth.currentUserInfo()
-      .then(response => setUsername(response.attributes.name))
-      
-    }
-  
-    getUserName()
-  }, [])
+  function handleSearch() {
+    const filter = {
+      type: "name",
+      value: search,
+    };
+    getDevs(filter);
+    Keyboard.dismiss();
+  }
 
   return (
     <>
-
-      <Header onpress='signout' />
-      {!devs ?
+      <Header onpress="signout" />
+      {!devs ? (
         <View style={styles.container}>
           <ActivityIndicator />
         </View>
-        :
+      ) : (
         <View style={styles.container}>
           <View style={styles.hello}>
             <Text style={styles.title}>Olá,</Text>
@@ -66,49 +78,36 @@ export default function Home() {
             <Text style={styles.title}>!</Text>
           </View>
 
-
           <View style={styles.form}>
-
-
             <View style={styles.inputContainer}>
-
               <TextInput
-                autoCompleteType='off'
+                autoCompleteType="off"
                 style={styles.inputs}
-                placeholderTextColor='#EEE'
-                placeholder='Digite para pesquisar... '
-                onChangeText={value => setSearch(value)}
+                placeholderTextColor="#EEE"
+                placeholder="Digite para pesquisar... "
+                onChangeText={(value) => setSearch(value)}
               />
               <View style={styles.icon}>
                 <Ionicons name="ios-search" size={16} color="#EEE" />
               </View>
             </View>
 
-
-            <TouchableOpacity
-            onPress={() => navigate('')}
-            disabled={loading ? true : false}
-          >
-            <View>
-              <View style={styles.iconSearch}>
-                <Ionicons name="ios-arrow-forward" size={18} color="#EEE" />
+            <TouchableOpacity onPress={handleSearch} disabled={loading ? true : false}>
+              <View>
+                <View style={styles.iconSearch}>
+                  <Ionicons name="ios-arrow-forward" size={18} color="#EEE" />
+                </View>
+                <Text style={styles.textSearch}>Filtrar</Text>
               </View>
-              <Text style={styles.textSearch}>Filtrar</Text>
-            </View>
-          </TouchableOpacity>
-
+            </TouchableOpacity>
           </View>
 
-
-
           <TouchableOpacity
-            onPress={() => navigate('Favs')}
+            onPress={() => navigate("Favs")}
             disabled={loading ? true : false}
             style={styles.buttons}
           >
-            <Text style={styles.texts}>
-              {loading ? 'Carregando...' : 'Favoritos'}
-            </Text>
+            <Text style={styles.texts}>{loading ? "Carregando..." : "Favoritos"}</Text>
           </TouchableOpacity>
           <Modal
             animationType="slide"
@@ -131,9 +130,8 @@ export default function Home() {
           </Modal>
           <FlatList
             data={devs}
-            contentContainerStyle={{ alignItems: 'center', width: '100%' }}
-            renderItem={({ item }) =>
-
+            contentContainerStyle={{ alignItems: "center", width: "100%" }}
+            renderItem={({ item }) => (
               <CardDev
                 id={item.id}
                 name={item.name}
@@ -143,26 +141,22 @@ export default function Home() {
                 photo={item.photo}
                 description={item.description}
                 onpress={() => {
-                  setModalVisible(true)
+                  setModalVisible(true);
                   setSelected({
-                    id:item.id,
+                    id: item.id,
                     name: item.name,
                     stack: item.stack,
                     category: item.category,
                     state: item.state,
                     photo: item.photo,
-                    description: item.description
-                  })
-
+                    description: item.description,
+                  });
                 }}
               />
-
-            }
+            )}
           />
-
-        </View>}
-
-
+        </View>
+      )}
     </>
-  )
+  );
 }
