@@ -64,12 +64,12 @@ export function CardDev(props) {
 
         if (!favorite.some(item => item.id === props.id)) {
           addFavorite(dev)
-          console.log(favorite)
+       
 
         }
         else {
           removefavorite(dev)
-          console.log(favorite)
+      
         }
       }}
       >
