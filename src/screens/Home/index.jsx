@@ -7,8 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Header } from '../../components/Header';
 import { Auth } from 'aws-amplify'
 import DevApi from '../../services/devApi'
-import { ModalDetails } from '../../components/ModalDetails';
-
+import { ModalDetails } from '../../components/ModalFilter';
+// import { ModalSearch } from '../../components/ModalSearch';
 
 
 export default function Home() {
@@ -83,7 +83,23 @@ export default function Home() {
                 <Ionicons name="ios-search" size={16} color="#EEE" />
               </View>
             </View>
+
+
+            <TouchableOpacity
+            onPress={() => navigate('')}
+            disabled={loading ? true : false}
+          >
+            <View>
+              <View style={styles.iconSearch}>
+                <Ionicons name="ios-arrow-forward" size={18} color="#EEE" />
+              </View>
+              <Text style={styles.textSearch}>Filtrar</Text>
+            </View>
+          </TouchableOpacity>
+
           </View>
+
+
 
           <TouchableOpacity
             onPress={() => navigate('Favs')}
