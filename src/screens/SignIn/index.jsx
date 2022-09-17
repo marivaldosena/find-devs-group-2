@@ -29,6 +29,24 @@ export default function SignIn() {
         setLoading(false)
     }
 
+    const onGooglePress = async () => {
+        if (loading) {
+            return
+        }
+
+        setLoading(true)
+
+        try {
+            const response = await Auth.federatedSignIn()
+
+        } catch (error) {
+            Alert.alert('Oops', error.message)
+        }
+        setLoading(false)
+    }
+
+
+
     return (
         <View style={styles.container}>
             <Logo />
@@ -75,7 +93,7 @@ export default function SignIn() {
             <View style={styles.socialContainer}>
 
                 <TouchableOpacity
-                    //onPress={() => onSignInPress()}
+                    onPress={() => onGooglePress()}
                     disabled={loading ? true : false}
                     style={styles.socialButtons}
                 >
