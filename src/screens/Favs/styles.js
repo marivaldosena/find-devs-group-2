@@ -58,7 +58,7 @@ export default StyleSheet.create({
     texts: {
         fontFamily: 'Poppins_400Regular',
         color: 'white',
-        margin: 10,
+        marginTop: 40,
         fontSize: 12,
         textAlign: 'center'
     },
