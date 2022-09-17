@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Header } from '../../components/Header';
 import { Auth } from 'aws-amplify'
 import DevApi from '../../services/devApi'
-import { ModalDetails } from '../../components/ModalFilter';
+import { ModalDetails } from '../../components/ModalDetails';
 // import { ModalSearch } from '../../components/ModalSearch';
 
 
