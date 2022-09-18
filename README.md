@@ -1,9 +1,11 @@
 <!-- Badges -->
+
 [gama-academy-badge]: https://img.shields.io/static/v1?label=Gama%20Academy&message=Dev%20For%20Tech&color=green
 [react-native-badge]: https://img.shields.io/static/v1?label=React%20Native&message=0.69&color=blue
-[acate-badge]:  https://img.shields.io/static/v1?label=Acate&message=2022&color=blue
+[acate-badge]: https://img.shields.io/static/v1?label=Acate&message=2022&color=blue
 
 <!-- Links -->
+
 [devfortech-url]: https://devfortech.corporate.gama.academy/
 [react-native-url]: https://reactnative.dev/
 [acate-url]: https://www.acate.com.br/
@@ -60,7 +62,6 @@ Para executar a aplicação são necessários:
 Os membros da equipe de desenvolvimento são:
 
 - [André Carvalho](https://github.com/andredecarvalh0)
-- [Fernanda Peters](https://github.com/fernandapeters)
-- [Jeffyson Rodrigues](https://github.com/jeffysonr)
+- [Alison Lima](https://github.com/alisonglima)
 - [Luciano dos Santos Bueno](https://github.com/Lucianoneo)
 - [Marivaldo Sena](https://github.com/marivaldosena)
