@@ -41,14 +41,22 @@ export default function Home() {
     try {
       const dev2 = await DevApi.listDevelopers(filter);
       setDevs(dev2);
-    } catch (error) {}
+    } catch (error) { }
   }
 
   useEffect(() => {
     getDevs();
 
     async function getUserName() {
-      await Auth.currentUserInfo().then((response) => setUsername(response.attributes.name));
+      await Auth.currentUserInfo().then((response) => {
+        response.attributes.name ?
+          setUsername(response.attributes.name)
+          :
+          setUsername(response.attributes.email)
+      }
+
+      );
+
     }
 
     getUserName();

@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
 import { AntDesign, Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { useState, useCallback } from 'react';
-import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Alert, Modal, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Logo } from '../../components/Logo';
 import styles from './styles';
 
@@ -30,13 +30,31 @@ export default function SignIn() {
         setLoading(false)
     }
 
-    const signin = useCallback(() => {
-        Auth.federatedSignIn({ provider: "google" });
-    }, []);
+    const signin = async () => {
+        setLoading(true)
+
+        try {
+            const response = Auth.federatedSignIn({ provider: "google" });
+
+        } catch (error) {
+            Alert.alert('Oops', error.message)
+        }
+        setLoading(false)
+
+    };
 
 
     return (
+
         <View style={styles.container}>
+            <Modal
+                visible={loading}
+                transparent={true}
+            >
+                <View style={styles.container}>
+                    <ActivityIndicator size={36} />
+                </View>
+            </Modal>
             <Logo />
             <Text style={styles.title}>Acesse sua conta</Text>
 
