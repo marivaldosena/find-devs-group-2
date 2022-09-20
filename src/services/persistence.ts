@@ -13,8 +13,12 @@ const saveDeveloper = async (username: string, developer: IDeveloper) => {
   try {
     const parsedData = await getAllDevelopers(username);
 
-    parsedData.push(developer);
-    await saveAllDevelopers(username, parsedData);
+    const index = parsedData.findIndex((item) => item.id === developer.id);
+
+    if (index === -1) {
+      parsedData.push(developer);
+      await saveAllDevelopers(username, parsedData);
+    }
   } catch (err) {
     console.log(err);
   }
@@ -42,9 +46,28 @@ const getDeveloper = async (username: string, developerId: number): Promise<IDev
   }
 };
 
+const removeDeveloper = async (username: string, developerId: number): Promise<IDeveloper[]> => {
+  try {
+    const parsedData = await getAllDevelopers(username);
+
+    const index = parsedData.findIndex((item) => item.id === developerId);
+
+    if (index !== -1) {
+      parsedData.splice(index, 1);
+      await saveAllDevelopers(username, parsedData);
+    }
+
+    return parsedData;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
 export default {
   saveAllDevelopers,
   saveDeveloper,
   getAllDevelopers,
   getDeveloper,
+  removeDeveloper,
 };
