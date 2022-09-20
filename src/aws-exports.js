@@ -16,8 +16,8 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "exp://192.168.2.24:19000",
-        "redirectSignOut": "exp://192.168.2.24:19000",
+        "redirectSignIn": "finddevs://",
+        "redirectSignOut": "finddevs://",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",
