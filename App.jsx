@@ -5,8 +5,19 @@ import awsconfig from './src/aws-exports';
 import Navigation from './src/navigation';
 import { Provider } from 'react-redux';
 import store from './src/store'
+import urlOpener from './src/utils/urlOpener';
 
-Amplify.configure(awsconfig)
+
+Amplify.configure({
+  ...awsconfig,
+  oauth: {
+    ...awsconfig.oauth,
+    urlOpener
+  }
+})
+
+
+
 
 
 const App = () => {

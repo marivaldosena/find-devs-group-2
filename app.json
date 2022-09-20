@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "cognito-custom-ui",
-    "slug": "cognito-custom-ui",
+    "name": "finddevs",
+    "slug": "finddevs",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "finddevs",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

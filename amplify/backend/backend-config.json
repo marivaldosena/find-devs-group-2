@@ -1,19 +1,20 @@
 {
   "auth": {
-    "CustomUIAuth": {
+    "finddevtest22482c06c": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "socialProviders": [],
+        "socialProviders": [
+          "GOOGLE"
+        ],
         "usernameAttributes": [],
         "signupAttributes": [
-          "EMAIL",
-          "NAME"
+          "EMAIL"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 6,
+          "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": []
         },
         "mfaConfiguration": "OFF",

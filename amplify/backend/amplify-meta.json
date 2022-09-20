@@ -1,32 +1,33 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-customuiauth-staging-183223-authRole",
-      "UnauthRoleArn": "arn:aws:iam::184436697717:role/amplify-customuiauth-staging-183223-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::184436697717:role/amplify-customuiauth-staging-183223-authRole",
+      "AuthRoleName": "amplify-finddevtest2-dev-205948-authRole",
+      "UnauthRoleArn": "arn:aws:iam::184436697717:role/amplify-finddevtest2-dev-205948-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::184436697717:role/amplify-finddevtest2-dev-205948-authRole",
       "Region": "us-west-1",
-      "DeploymentBucketName": "amplify-customuiauth-staging-183223-deployment",
-      "UnauthRoleName": "amplify-customuiauth-staging-183223-unauthRole",
-      "StackName": "amplify-customuiauth-staging-183223",
-      "StackId": "arn:aws:cloudformation:us-west-1:184436697717:stack/amplify-customuiauth-staging-183223/15aa53a0-2d49-11ed-ab4f-0282ba422373",
-      "AmplifyAppId": "d372bp4lvbkpld"
+      "DeploymentBucketName": "amplify-finddevtest2-dev-205948-deployment",
+      "UnauthRoleName": "amplify-finddevtest2-dev-205948-unauthRole",
+      "StackName": "amplify-finddevtest2-dev-205948",
+      "StackId": "arn:aws:cloudformation:us-west-1:184436697717:stack/amplify-finddevtest2-dev-205948/24bd68d0-3877-11ed-98af-02e3c63c6a5f",
+      "AmplifyAppId": "d353tvmmcvse82"
     }
   },
   "auth": {
-    "CustomUIAuth": {
+    "finddevtest22482c06c": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "socialProviders": [],
+        "socialProviders": [
+          "GOOGLE"
+        ],
         "usernameAttributes": [],
         "signupAttributes": [
-          "EMAIL",
-          "NAME"
+          "EMAIL"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 6,
+          "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": []
         },
         "mfaConfiguration": "OFF",
@@ -37,20 +38,23 @@
           "EMAIL"
         ]
       },
-      "output": {
-        "UserPoolId": "us-west-1_wWcrPGnx9",
-        "AppClientIDWeb": "2eoomnh9vbi9ancopmqgp8552i",
-        "AppClientID": "1hjonipo3ds2fpofk4sdtklkhd",
-        "IdentityPoolId": "us-west-1:44e7f157-3451-4997-9018-427e5a327565",
-        "UserPoolArn": "arn:aws:cognito-idp:us-west-1:184436697717:userpool/us-west-1_wWcrPGnx9",
-        "IdentityPoolName": "testAuthIdentityPool__staging",
-        "UserPoolName": "CustomUIAuth"
-      },
-      "lastPushTimeStamp": "2022-09-05T18:53:41.251Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-customuiauth-staging-183223-deployment/amplify-cfn-templates/auth/CustomUIAuth-cloudformation-template.json",
-        "logicalId": "authCustomUIAuth"
-      }
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-finddevtest2-dev-205948-deployment/amplify-cfn-templates/auth/finddevtest22482c06c-cloudformation-template.json",
+        "logicalId": "authfinddevtest22482c06c"
+      },
+      "lastPushTimeStamp": "2022-09-20T02:08:49.165Z",
+      "output": {
+        "UserPoolId": "us-west-1_SP2iekUse",
+        "AppClientIDWeb": "5f0q5l2doqui2tpe54o90s1rgv",
+        "AppClientID": "165dnr2jtth920tli60s6hdnf",
+        "HostedUIDomain": "finddevs2-dev",
+        "IdentityPoolId": "us-west-1:1c32321e-a2b4-4b0a-bac2-9dca5f30d71c",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-1:184436697717:userpool/us-west-1_SP2iekUse",
+        "IdentityPoolName": "finddevtest22482c06c_identitypool_2482c06c__dev",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"finddevs://\"],\"LogoutURLs\":[\"finddevs://\"]}",
+        "UserPoolName": "finddevtest22482c06c_userpool_2482c06c"
+      },
+      "lastPushDirHash": "1OA00qQPlrn9Lg4PY+Cpcte170Y="
     }
   }
 }

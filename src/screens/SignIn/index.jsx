@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
-import { AntDesign, Entypo, FontAwesome5 ,Ionicons } from '@expo/vector-icons';
-import { useState } from 'react';
+import { AntDesign, Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons';
+import { useState, useCallback } from 'react';
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Logo } from '../../components/Logo';
 import styles from './styles';
+
 
 export default function SignIn() {
 
@@ -29,22 +30,9 @@ export default function SignIn() {
         setLoading(false)
     }
 
-    const onGooglePress = async () => {
-        if (loading) {
-            return
-        }
-
-        setLoading(true)
-
-        try {
-            const response = await Auth.federatedSignIn()
-
-        } catch (error) {
-            Alert.alert('Oops', error.message)
-        }
-        setLoading(false)
-    }
-
+    const signin = useCallback(() => {
+        Auth.federatedSignIn({ provider: "google" });
+    }, []);
 
 
     return (
@@ -67,7 +55,7 @@ export default function SignIn() {
                 </View>
                 <View style={styles.inputContainer}>
                     <View style={styles.icon}>
-                    <Ionicons name="ios-key-sharp" size={24} color="#EEE"/>
+                        <Ionicons name="ios-key-sharp" size={24} color="#EEE" />
                     </View>
                     <TextInput
                         style={styles.inputs}
@@ -93,11 +81,11 @@ export default function SignIn() {
             <View style={styles.socialContainer}>
 
                 <TouchableOpacity
-                    onPress={() => onGooglePress()}
+                    onPress={() => signin()}
                     disabled={loading ? true : false}
                     style={styles.socialButtons}
                 >
-                    <Text><AntDesign name="google" size={18}  color="#4D4D4D"  /></Text>
+                    <Text><AntDesign name="google" size={18} color="#4D4D4D" /></Text>
                     <Text style={styles.socialTexts}>
                         Google
                     </Text>

@@ -3,23 +3,37 @@
 
 const awsmobile = {
     "aws_project_region": "us-west-1",
-    "aws_cognito_identity_pool_id": "us-west-1:44e7f157-3451-4997-9018-427e5a327565",
+    "aws_cognito_identity_pool_id": "us-west-1:1c32321e-a2b4-4b0a-bac2-9dca5f30d71c",
     "aws_cognito_region": "us-west-1",
-    "aws_user_pools_id": "us-west-1_wWcrPGnx9",
-    "aws_user_pools_web_client_id": "2eoomnh9vbi9ancopmqgp8552i",
-    "oauth": {},
+    "aws_user_pools_id": "us-west-1_SP2iekUse",
+    "aws_user_pools_web_client_id": "5f0q5l2doqui2tpe54o90s1rgv",
+    "oauth": {
+        "domain": "finddevs2-dev.auth.us-west-1.amazoncognito.com",
+        "scope": [
+            "phone",
+            "email",
+            "openid",
+            "profile",
+            "aws.cognito.signin.user.admin"
+        ],
+        "redirectSignIn": "exp://192.168.2.24:19000",
+        "redirectSignOut": "exp://192.168.2.24:19000",
+        "responseType": "code"
+    },
+    "federationTarget": "COGNITO_USER_POOLS",
     "aws_cognito_username_attributes": [],
-    "aws_cognito_social_providers": [],
+    "aws_cognito_social_providers": [
+        "GOOGLE"
+    ],
     "aws_cognito_signup_attributes": [
-        "EMAIL",
-        "NAME"
+        "EMAIL"
     ],
     "aws_cognito_mfa_configuration": "OFF",
     "aws_cognito_mfa_types": [
         "SMS"
     ],
     "aws_cognito_password_protection_settings": {
-        "passwordPolicyMinLength": 6,
+        "passwordPolicyMinLength": 8,
         "passwordPolicyCharacters": []
     },
     "aws_cognito_verification_mechanisms": [

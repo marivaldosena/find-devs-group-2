@@ -1,5 +1,7 @@
 {
-  "staging": {
-    "configLevel": "amplifyAdmin"
+  "dev": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "C:\\Users\\Neo\\.amplify\\awscloudformation\\31tsA3n7bm"
   }
 }
