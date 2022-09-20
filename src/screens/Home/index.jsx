@@ -10,6 +10,7 @@ import {
   Modal,
   Keyboard,
 } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles";
 import { CardDev } from "../../components/CardDev";
 import { useNavigation } from "@react-navigation/native";
@@ -17,10 +18,12 @@ import { Header } from "../../components/Header";
 import { Auth } from "aws-amplify";
 import DevApi from "../../services/devApi";
 import { ModalDetails } from "../../components/ModalDetails";
+import { addLoggedUser } from "../../store/modules/user/reducer";
 // import { ModalSearch } from '../../components/ModalSearch';
 
 export default function Home() {
   const navigate = useNavigation().navigate;
+  const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
@@ -41,22 +44,18 @@ export default function Home() {
     try {
       const dev2 = await DevApi.listDevelopers(filter);
       setDevs(dev2);
-    } catch (error) { }
+    } catch (error) {}
   }
 
   useEffect(() => {
     getDevs();
 
     async function getUserName() {
-      await Auth.currentUserInfo().then((response) => {
-        response.attributes.name ?
-          setUsername(response.attributes.name)
-          :
-          setUsername(response.attributes.email)
-      }
-
-      );
-
+      const response = await Auth.currentUserInfo();
+      response.attributes.name
+        ? setUsername(response.attributes.name)
+        : setUsername(response.attributes.email);
+      dispatch(addLoggedUser(response.username));
     }
 
     getUserName();

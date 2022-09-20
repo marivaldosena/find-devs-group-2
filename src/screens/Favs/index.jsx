@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Text, View, Modal } from "react-native";
 import { useSelector } from "react-redux";
 import { CardDev } from "../../components/CardDev";
 import { Header } from "../../components/Header";
 import { ModalDetails } from "../../components/ModalDetails";
-import { favStateData } from "../../store/modules/favorites/reducer";
+import { userStateData } from "../../store/modules/user/reducer";
+import persistency from "../../services/persistence";
 import styles from "./styles";
 
 export default function Favs() {
@@ -19,7 +20,12 @@ export default function Favs() {
   });
   const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const favorite = useSelector(favStateData);
+  const [favorites, setFavorites] = useState([]);
+  const username = useSelector(userStateData);
+
+  useEffect(() => {
+    persistency.getAllDevelopers(username).then((favs) => setFavorites(favs));
+  }, [favorites]);
 
   const onResendPress = async () => {
     if (loading) {
@@ -53,8 +59,8 @@ export default function Favs() {
         <View style={styles.hello}>
           <Text style={styles.title}>Favoritos</Text>
         </View>
-        {favorite == "" && <Text style={styles.texts}>Não há favoritos salvos.</Text>}
-        {favorite.map((item, index) => (
+        {favorites == "" && <Text style={styles.texts}>Não há favoritos salvos.</Text>}
+        {favorites.map((item, index) => (
           <CardDev
             key={item.id}
             id={item.id}
@@ -64,6 +70,7 @@ export default function Favs() {
             state={item.state}
             photo={item.photo}
             description={item.description}
+            setFavorites={setFavorites}
             onpress={() => {
               setModalVisible(true);
               setSelected({
