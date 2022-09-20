@@ -1,23 +1,19 @@
-
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { useSelector, useDispatch } from 'react-redux'
-import { favStateData, addNewFavorite, removeFavorite } from '../store/modules/favorites/reducer'
+import { useEffect, useState } from "react";
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useSelector, useDispatch } from "react-redux";
+import { userStateData } from "../store/modules/user/reducer";
+import persistency from "../services/persistence";
 
 export function CardDev(props) {
+  const [favorites, setFavorites] = useState([]);
+  const username = useSelector(userStateData);
 
-  const favorite = useSelector(favStateData);
-  const dispatch = useDispatch();
+  useEffect(() => {
+    persistency.getAllDevelopers(username).then((favs) => setFavorites(favs));
+  }, [favorites]);
 
-  const addFavorite = (item) => {
-    dispatch(addNewFavorite(item));
-  }
-
-  const removefavorite = (item) => {
-    dispatch(removeFavorite(item));
-  }
-
-  const isFavorite = favorite.some(item => item.id === props.id)
+  const isFavorite = favorites.findIndex((item) => item.id === props.id);
 
   const dev = {
     category: props.category,
@@ -27,25 +23,19 @@ export function CardDev(props) {
     photo: props.photo,
     stack: props.stack,
     state: props.state,
-  }
+  };
 
   return (
-    <TouchableOpacity style={styles.card}
-      onPress={props.onpress}
-    >
+    <TouchableOpacity style={styles.card} onPress={props.onpress}>
       <View style={styles.profile}>
         <View style={styles.cardIcon}>
-          <Image
-            style={styles.img}
-            source={{ uri: props.photo }}
-          />
+          <Image style={styles.img} source={{ uri: props.photo }} />
         </View>
       </View>
       <View style={styles.cardInfo}>
-
-        <Text
-          numberOfLines={1}
-          style={styles.titleBoldFav}>{props.name}</Text>
+        <Text numberOfLines={1} style={styles.titleBoldFav}>
+          {props.name}
+        </Text>
 
         <View style={styles.infoDev}>
           <Text style={styles.texts}>{props.category}</Text>
@@ -55,44 +45,41 @@ export function CardDev(props) {
 
         <View style={styles.cardStacks}>
           <Text style={styles.reactStack}>{props.stack}</Text>
-
         </View>
-
-
       </View>
 
       <TouchableOpacity
         onPress={() => {
+          if (isFavorite === -1) {
+            persistency.saveDeveloper(username, dev);
+          } else {
+            persistency.removeDeveloper(username, dev.id);
 
-          if (!favorite.some(item => item.id === props.id)) {
-            addFavorite(dev)
-
-
-          }
-          else {
-            removefavorite(dev)
-
+            props.setFavorites &&
+              props.setFavorites((favs) => {
+                favs.splice(isFavorite, 1);
+                return favs;
+              });
           }
         }}
       >
-        <Ionicons style={styles.iconFav}
-
-
-          name={isFavorite ? "star" : "star-outline"}
-          size={26} color="#DE8F45" />
+        <Ionicons
+          style={styles.iconFav}
+          name={isFavorite !== -1 ? "star" : "star-outline"}
+          size={26}
+          color="#DE8F45"
+        />
       </TouchableOpacity>
-
     </TouchableOpacity>
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#202024',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-    alignItems: 'center',
+    backgroundColor: "#202024",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+    alignItems: "center",
     paddingVertical: 20,
     flex: 1,
   },
@@ -101,67 +88,64 @@ const styles = StyleSheet.create({
     marginBottom: 80,
   },
   inputContainer: {
-    flexDirection: 'row',
-    textAlign: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    textAlign: "center",
+    justifyContent: "center",
     marginTop: -20,
   },
   inputs: {
-    backgroundColor: '#121214',
-    color: 'white',
+    backgroundColor: "#121214",
+    color: "white",
     padding: 10,
-    width: '91%',
+    width: "91%",
     marginBottom: 20,
     marginLeft: 15,
     borderRadius: 6,
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: "Poppins_400Regular",
     fontSize: 12,
     paddingLeft: 15,
   },
   hello: {
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
+    flexDirection: "row",
+    alignSelf: "flex-start",
     marginLeft: 20,
   },
   title: {
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: "Poppins_400Regular",
     fontSize: 20,
-    color: 'white',
+    color: "white",
     marginBottom: 10,
-    alignSelf: 'flex-start',
-
+    alignSelf: "flex-start",
   },
   titleBold: {
-    fontFamily: 'Poppins_700Bold',
+    fontFamily: "Poppins_700Bold",
     fontSize: 20,
-    color: 'white',
+    color: "white",
     marginBottom: 10,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     paddingLeft: 4,
-
   },
   texts: {
-    fontFamily: 'Poppins_400Regular',
-    color: 'white',
+    fontFamily: "Poppins_400Regular",
+    color: "white",
     fontSize: 12,
-
   },
   textLink: {
-    textDecorationLine: 'underline',
-    fontFamily: 'Poppins_400Regular',
-    color: 'white',
+    textDecorationLine: "underline",
+    fontFamily: "Poppins_400Regular",
+    color: "white",
     margin: 20,
     fontSize: 12,
-    textAlign: 'center'
+    textAlign: "center",
   },
 
   buttons: {
-    width: '90%',
+    width: "90%",
     height: 56,
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#DE8F45',
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#DE8F45",
     borderRadius: 6,
     marginBottom: 20,
     marginTop: -80,
@@ -170,7 +154,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.20,
+    shadowOpacity: 0.2,
     shadowRadius: 1.41,
 
     elevation: 2,
@@ -182,23 +166,23 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   card: {
-    width: '90%',
+    width: "90%",
     height: 100,
-    textAlign: 'center',
-    backgroundColor: '#121214',
+    textAlign: "center",
+    backgroundColor: "#121214",
     borderRadius: 6,
     marginTop: 30,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     padding: 10,
-    alignItems: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    flexDirection: "row",
     marginBottom: -10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.20,
+    shadowOpacity: 0.2,
     shadowRadius: 1.41,
 
     elevation: 2,
@@ -206,64 +190,62 @@ const styles = StyleSheet.create({
   profile: {
     width: 80,
     height: 80,
-    backgroundColor: '#E1E1E6',
+    backgroundColor: "#E1E1E6",
     borderRadius: 50,
     borderWidth: 3,
-    borderColor: '#4d4d4d',
-    alignItems: 'center',
-    overflow: 'hidden',
+    borderColor: "#4d4d4d",
+    alignItems: "center",
+    overflow: "hidden",
   },
   cardIcon: {
     fontSize: 70,
-    color: '#000',
-    justifyContent: 'center',
-
+    color: "#000",
+    justifyContent: "center",
   },
   cardInfo: {
     flex: 1,
     marginLeft: 10,
   },
   titleBoldFav: {
-    fontFamily: 'Poppins_700Bold',
+    fontFamily: "Poppins_700Bold",
     fontSize: 20,
-    color: 'white',
-    paddingRight: 15,
+    color: "white",
   },
   cardStacks: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   infoDev: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   iconFav: {
     marginTop: -40,
   },
   javascriptStack: {
     fontSize: 12,
-    color: '#DE8F45',
+    color: "#DE8F45",
   },
   reactStack: {
     fontSize: 12,
-    color: '#5BFE66',
+    color: "#5BFE66",
   },
   reactnativeStack: {
     fontSize: 12,
-    color: '#2D9135',
+    color: "#2D9135",
   },
   nodeStack: {
     fontSize: 12,
-    color: '#4E31FC',
+    color: "#4E31FC",
   },
   csharpStack: {
     fontSize: 12,
-    color: '#7953E0',
+    color: "#7953E0",
   },
   phytonStack: {
     fontSize: 12,
-    color: '#916134',
+    color: "#916134",
   },
   img: {
     width: 100,
     height: 100,
-  }
-})
+  },
+});
