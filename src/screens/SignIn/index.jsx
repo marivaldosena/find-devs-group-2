@@ -30,7 +30,7 @@ export default function SignIn() {
         setLoading(false)
     }
 
-    const signin = async () => {
+    const googleSignIn = async () => {
         setLoading(true)
 
         try {
@@ -39,7 +39,6 @@ export default function SignIn() {
         } catch (error) {
             Alert.alert('Oops', error.message)
         }
-        setLoading(false)
 
     };
 
@@ -48,10 +47,10 @@ export default function SignIn() {
 
         <View style={styles.container}>
             <Modal
-                visible={loading}
+                visible={!user && loading ? true : false}
                 transparent={true}
             >
-                <View style={styles.container}>
+                <View style={styles.containerModal}>
                     <ActivityIndicator size={36} />
                 </View>
             </Modal>
@@ -99,13 +98,13 @@ export default function SignIn() {
             <View style={styles.socialContainer}>
 
                 <TouchableOpacity
-                    onPress={() => signin()}
+                    onPress={() => googleSignIn()}
                     disabled={loading ? true : false}
                     style={styles.socialButtons}
                 >
                     <Text><AntDesign name="google" size={18} color="#4D4D4D" /></Text>
                     <Text style={styles.socialTexts}>
-                        Google
+                        {loading ? 'Carregando...' : 'Google'}
                     </Text>
                 </TouchableOpacity>
 

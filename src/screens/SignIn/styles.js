@@ -13,8 +13,8 @@ export default StyleSheet.create({
         marginTop: 20,
         marginBottom: 100,
     },
-    inputContainer:{
-        flexDirection:'row',
+    inputContainer: {
+        flexDirection: 'row',
         textAlign: 'center',
         justifyContent: 'center',
         marginLeft: -20
@@ -29,21 +29,21 @@ export default StyleSheet.create({
         fontFamily: 'Poppins_400Regular',
         fontSize: 12,
         padding: 50,
-},
-title: {
-    fontFamily: 'Poppins_700Bold',
-    fontSize: 20,
-    color: 'white',
-    marginTop: 20,
+    },
+    title: {
+        fontFamily: 'Poppins_700Bold',
+        fontSize: 20,
+        color: 'white',
+        marginTop: 20,
 
-},
-texts: {
-    fontFamily: 'Poppins_400Regular',
-    color: 'white',
-   
-    fontSize: 12,
-    textAlign: 'center'
-},
+    },
+    texts: {
+        fontFamily: 'Poppins_400Regular',
+        color: 'white',
+
+        fontSize: 12,
+        textAlign: 'center'
+    },
     textLink: {
         textDecorationLine: 'underline',
         fontFamily: 'Poppins_700Bold',
@@ -62,7 +62,7 @@ texts: {
         width: '90%',
         height: 56,
         textAlign: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
         backgroundColor: '#2D9135',
         borderRadius: 6,
         marginBottom: 10,
@@ -90,22 +90,22 @@ texts: {
     },
     socialContainer: {
         width: '90%',
-        flexDirection:'row',
+        flexDirection: 'row',
         textAlign: 'center',
         justifyContent: 'space-between',
         marginVertical: 10,
     },
-    socialButtons:{
+    socialButtons: {
         color: '#4D4D4D',
         height: 56,
         fontFamily: 'Poppins_700Bold',
         width: '100%',
         backgroundColor: '#E1E1E6',
-        paddingVertical:10,
+        paddingVertical: 10,
         borderRadius: 6,
-        alignItems:'center',
-        justifyContent:'center',
-        flexDirection:'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -116,16 +116,23 @@ texts: {
 
         elevation: 2,
     },
-    socialTexts:{
+    socialTexts: {
         color: '#4D4D4D',
         fontFamily: 'Poppins_700Bold',
-        marginLeft:10,
+        marginLeft: 10,
         fontSize: 12
     },
-     icon:{
-            translateX: 35,
-            translateY: 10,
-            zIndex: 2,
-        },
-    
+    icon: {
+        translateX: 35,
+        translateY: 10,
+        zIndex: 2,
+    },
+    containerModal: {
+        backgroundColor: '#202024',
+        opacity: 0.5,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+
 })
