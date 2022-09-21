@@ -1,14 +1,19 @@
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { CheckBox } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function ModalFilter(props) {
   const [stackFilters, setStackFilters] = useState(new Set());
   const [stack0Checked, setStack0Checked] = useState(false);
   const [stack1Checked, setStack1Checked] = useState(false);
   const [stack2Checked, setStack2Checked] = useState(false);
-  const [categoryFilters, setCategoryFilters] = useState(new Set());
+  const [categoryFilters, setCategoryFilters] = useState(() => new Set());
+
+
+  useEffect(() => {
+    console.log(categoryFilters)
+  }, [categoryFilters])
 
   return (
     <View style={styles.modal}>
@@ -109,7 +114,22 @@ export function ModalFilter(props) {
             <CheckBox
               value="0"
               checked={categoryFilters.has("0")}
-              onPress={() => setCategoryFilters(categoryFilters.add("0"))}
+              onPress={() => {
+                if (categoryFilters.has("0")) {
+                  setCategoryFilters(prev => {
+                    const next = new Set(prev);
+                    next.delete('0');
+                    return next;
+                  })
+                  return
+                }
+                else {
+                  setCategoryFilters(prev => new Set(prev).add('0'))
+                }
+
+              }
+
+              }
               style={styles.checkbox}
             />
             <Text style={styles.label}>Front-end</Text>
@@ -121,7 +141,22 @@ export function ModalFilter(props) {
             <CheckBox
               value="1"
               checked={categoryFilters.has("1")}
-              onPress={() => setCategoryFilters(categoryFilters.add("1"))}
+              onPress={() => {
+                if (categoryFilters.has("1")) {
+                  setCategoryFilters(prev => {
+                    const next = new Set(prev);
+                    next.delete('1');
+                    return next;
+                  })
+                  return
+                }
+                else {
+                  setCategoryFilters(prev => new Set(prev).add('1'))
+                }
+
+              }
+
+              }
               style={styles.checkbox}
             />
             <Text style={styles.label}>Back-end</Text>
@@ -133,7 +168,22 @@ export function ModalFilter(props) {
             <CheckBox
               value="2"
               checked={categoryFilters.has("2")}
-              onPress={() => setCategoryFilters(categoryFilters.add("2"))}
+              onPress={() => {
+                if (categoryFilters.has("2")) {
+                  setCategoryFilters(prev => {
+                    const next = new Set(prev);
+                    next.delete('2');
+                    return next;
+                  })
+                  return
+                }
+                else {
+                  setCategoryFilters(prev => new Set(prev).add('2'))
+                }
+
+              }
+
+              }
               style={styles.checkbox}
             />
             <Text style={styles.label}>Mobile</Text>
