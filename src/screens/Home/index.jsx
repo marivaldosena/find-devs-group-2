@@ -18,8 +18,8 @@ import { Header } from "../../components/Header";
 import { Auth } from "aws-amplify";
 import DevApi from "../../services/devApi";
 import { ModalDetails } from "../../components/ModalDetails";
+import { ModalFilter } from "../../components/ModalFilter";
 import { addLoggedUser } from "../../store/modules/user/reducer";
-// import { ModalSearch } from '../../components/ModalSearch';
 
 export default function Home() {
   const navigate = useNavigation().navigate;
@@ -29,6 +29,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [devs, setDevs] = useState();
   const [modalVisible, setModalVisible] = useState(false);
+  const [filterModalVisible, setFilterModalVisible] = useState(false);
   const [username, setUsername] = useState("Dev");
   const [selected, setSelected] = useState({
     id: "",
@@ -94,12 +95,17 @@ export default function Home() {
                 placeholder="Digite para pesquisar... "
                 onChangeText={(value) => setSearch(value)}
               />
-              <View style={styles.icon}>
-                <Ionicons name="ios-search" size={16} color="#EEE" />
-              </View>
+              <TouchableOpacity onPress={handleSearch} disabled={loading ? true : false}>
+                <View style={styles.icon}>
+                  <Ionicons name="ios-search" size={16} color="#EEE" />
+                </View>
+              </TouchableOpacity>
             </View>
 
-            <TouchableOpacity onPress={handleSearch} disabled={loading ? true : false}>
+            <TouchableOpacity
+              onPress={() => setFilterModalVisible(true)}
+              disabled={loading ? true : false}
+            >
               <View>
                 <View style={styles.iconSearch}>
                   <Ionicons name="ios-arrow-forward" size={18} color="#EEE" />
@@ -119,9 +125,19 @@ export default function Home() {
           <Modal
             animationType="slide"
             transparent={true}
+            visible={filterModalVisible}
+            onRequestClose={() => {
+              setFilterModalVisible(!filterModalVisible);
+            }}
+          >
+            <ModalFilter close={() => setFilterModalVisible(false)} />
+          </Modal>
+          <Modal
+            animationType="slide"
+            transparent={true}
             visible={modalVisible}
             onRequestClose={() => {
-              setModalVisible(!modalVisible);
+              setFilterModalVisible(!modalVisible);
             }}
           >
             <ModalDetails
