@@ -1,25 +1,22 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { Auth } from "aws-amplify";
 import { useEffect, useState } from "react";
 import {
-  Text,
+  ActivityIndicator,
+  FlatList, Keyboard, Modal, Text,
   TextInput,
   TouchableOpacity,
-  View,
-  ActivityIndicator,
-  FlatList,
-  Modal,
-  Keyboard,
+  View
 } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
-import styles from "./styles";
+import { useDispatch } from "react-redux";
 import { CardDev } from "../../components/CardDev";
-import { useNavigation } from "@react-navigation/native";
 import { Header } from "../../components/Header";
-import { Auth } from "aws-amplify";
-import DevApi from "../../services/devApi";
 import { ModalDetails } from "../../components/ModalDetails";
 import { ModalFilter } from "../../components/ModalFilter";
+import DevApi from "../../services/devApi";
 import { addLoggedUser } from "../../store/modules/user/reducer";
+import styles from "./styles";
 
 export default function Home() {
   const navigate = useNavigation().navigate;
@@ -84,6 +81,18 @@ export default function Home() {
     Keyboard.dismiss();
   }
 
+
+  function filterByName() {
+    return devs.filter((filtered) => filtered.name.toLowerCase().includes(search.toLowerCase())
+    )
+  }
+
+  let filtered = ''
+  if (devs) {
+    filtered = filterByName()
+  }
+
+
   return (
     <>
       <Header onpress="signout" />
@@ -108,11 +117,11 @@ export default function Home() {
                 placeholder="Digite para pesquisar... "
                 onChangeText={(value) => setSearch(value)}
               />
-              <TouchableOpacity onPress={handleSearch} disabled={loading ? true : false}>
-                <View style={styles.icon}>
-                  <Ionicons name="ios-search" size={16} color="#EEE" />
-                </View>
-              </TouchableOpacity>
+
+              <View style={styles.icon}>
+                <Ionicons name="ios-search" size={16} color="#EEE" />
+              </View>
+
             </View>
 
             <TouchableOpacity
@@ -177,7 +186,7 @@ export default function Home() {
             />
           </Modal>
           <FlatList
-            data={devs}
+            data={filtered}
             contentContainerStyle={{ alignItems: "center", width: "100%" }}
             renderItem={({ item }) => (
               <CardDev

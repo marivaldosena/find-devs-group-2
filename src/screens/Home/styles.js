@@ -8,16 +8,23 @@ export default StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
         alignItems: 'center',
-        paddingVertical:20,
+        paddingVertical: 20,
         flex: 1,
+    },
+    loading: {
+        backgroundColor: '#202024',
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+        alignItems: 'center',
+        paddingVertical: 20,
     },
 
     form: {
         marginTop: 20,
         marginBottom: 80,
     },
-    inputContainer:{
-        flexDirection:'row',
+    inputContainer: {
+        flexDirection: 'row',
         textAlign: 'center',
         justifyContent: 'center',
         marginTop: -20,
@@ -45,7 +52,7 @@ export default StyleSheet.create({
         color: 'white',
         marginBottom: 10,
         alignSelf: 'flex-start',
-        
+
     },
     titleBold: {
         fontFamily: 'Poppins_700Bold',
@@ -79,13 +86,13 @@ export default StyleSheet.create({
         fontSize: 12,
         textAlign: 'right',
     },
-    
+
     buttons: {
         width: '90%',
         height: 56,
         textAlign: 'center',
         alignItems: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
         backgroundColor: '#DE8F45',
         borderRadius: 6,
         marginBottom: 20,
@@ -100,13 +107,13 @@ export default StyleSheet.create({
 
         elevation: 2,
     },
-        
-    icon:{
+
+    icon: {
         translateX: -40,
         translateY: 15,
         zIndex: 2,
     },
-    iconSearch:{
+    iconSearch: {
         alignItems: 'flex-end',
         marginRight: 20,
         marginTop: -10,
@@ -142,12 +149,12 @@ export default StyleSheet.create({
         borderColor: '#4d4d4d',
         alignItems: 'center',
     },
-    cardIcon:{
+    cardIcon: {
         fontSize: 70,
         color: '#000',
         justifyContent: 'center',
     },
-    cardInfo:{
+    cardInfo: {
         flex: 1,
         marginLeft: 10,
     },
@@ -156,36 +163,36 @@ export default StyleSheet.create({
         fontSize: 20,
         color: 'white',
     },
-    cardStacks:{
+    cardStacks: {
         flexDirection: 'row',
     },
-    infoDev:{
+    infoDev: {
         flexDirection: 'row',
     },
-    iconFav:{
+    iconFav: {
         marginTop: -40,
     },
-    javascriptStack:{
+    javascriptStack: {
         fontSize: 12,
         color: '#DE8F45',
     },
-    reactStack:{
+    reactStack: {
         fontSize: 12,
         color: '#5BFE66',
     },
-    reactnativeStack:{
+    reactnativeStack: {
         fontSize: 12,
         color: '#2D9135',
     },
-    nodeStack:{
+    nodeStack: {
         fontSize: 12,
         color: '#4E31FC',
     },
-    csharpStack:{
+    csharpStack: {
         fontSize: 12,
         color: '#7953E0',
     },
-    phytonStack:{
+    phytonStack: {
         fontSize: 12,
         color: '#916134',
     },
