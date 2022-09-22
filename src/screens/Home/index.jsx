@@ -48,7 +48,7 @@ export default function Home() {
     try {
       const dev2 = await DevApi.listDevelopers(filters);
       setDevs(dev2);
-    } catch (error) {}
+    } catch (error) { }
   }
 
   useEffect(() => {
@@ -150,7 +150,11 @@ export default function Home() {
               setStackFilters={setStackFilters}
               setCategoryFilters={setCategoryFilters}
               setStateFilters={setStateFilters}
-              close={() => setFilterModalVisible(false)}
+              close={() => {
+                handleSearch()
+                setFilterModalVisible(false)
+
+              }}
             />
           </Modal>
           <Modal

@@ -49,21 +49,22 @@ export function CardDev(props) {
       </View>
 
       <TouchableOpacity
-        onPress={() => {
-          if (isFavorite === -1) {
-            persistency.saveDeveloper(username, dev);
-          } else {
-            persistency.removeDeveloper(username, dev.id);
 
-            props.setFavorites &&
-              props.setFavorites((favs) => {
-                favs.splice(isFavorite, 1);
-                return favs;
-              });
-          }
-        }}
       >
         <Ionicons
+          onPress={() => {
+            if (isFavorite === -1) {
+              persistency.saveDeveloper(username, dev);
+            } else {
+              persistency.removeDeveloper(username, dev.id);
+
+              props.setFavorites &&
+                props.setFavorites((favs) => {
+                  favs.splice(isFavorite, 1);
+                  return favs;
+                });
+            }
+          }}
           style={styles.iconFav}
           name={isFavorite !== -1 ? "star" : "star-outline"}
           size={26}

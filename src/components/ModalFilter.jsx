@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Dimensions, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from "react-native";
 import { CheckBox } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -37,6 +37,47 @@ export function ModalFilter(props) {
 
         <View style={styles.searchCategory}>
           <View style={styles.searchCategoryHeader}>
+            <Text style={styles.searchCategoryText}>Categorias</Text>
+            <TouchableOpacity
+              onPress={() => {
+                props.setStateFilters(new Set())
+                props.setCategoryFilters(new Set())
+                props.setStackFilters(new Set())
+              }}
+            >
+              <Text style={styles.link}>Limpar</Text>
+            </TouchableOpacity>
+          </View>
+
+          <ScrollView style={styles.searchItemContainer}>
+            {categories.map((category) => (
+              <View key={category.id}>
+                <View style={styles.searchItem}>
+                  <CheckBox
+                    value={category.id}
+                    checked={props.categoryFilters.has(category.id)}
+                    onPress={() => {
+                      if (props.categoryFilters.has(category.id)) {
+                        props.setCategoryFilters((prev) => {
+                          const next = new Set(prev);
+                          next.delete(category.id);
+                          return next;
+                        });
+                      } else {
+                        props.setCategoryFilters((prev) => new Set(prev).add(category.id));
+                      }
+                    }}
+                    style={styles.checkbox}
+                  />
+                  <Text style={styles.label}>{category.name}</Text>
+                </View>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+
+        <View style={styles.searchCategory}>
+          <View style={styles.searchCategoryHeader}>
             <Text style={styles.searchCategoryText}>Stack de tecnologias</Text>
           </View>
 
@@ -67,37 +108,7 @@ export function ModalFilter(props) {
           </ScrollView>
         </View>
 
-        <View style={styles.searchCategory}>
-          <View style={styles.searchCategoryHeader}>
-            <Text style={styles.searchCategoryText}>Categorias</Text>
-          </View>
 
-          <ScrollView style={styles.searchItemContainer}>
-            {categories.map((category) => (
-              <View key={category.id}>
-                <View style={styles.searchItem}>
-                  <CheckBox
-                    value={category.id}
-                    checked={props.categoryFilters.has(category.id)}
-                    onPress={() => {
-                      if (props.categoryFilters.has(category.id)) {
-                        props.setCategoryFilters((prev) => {
-                          const next = new Set(prev);
-                          next.delete(category.id);
-                          return next;
-                        });
-                      } else {
-                        props.setCategoryFilters((prev) => new Set(prev).add(category.id));
-                      }
-                    }}
-                    style={styles.checkbox}
-                  />
-                  <Text style={styles.label}>{category.name}</Text>
-                </View>
-              </View>
-            ))}
-          </ScrollView>
-        </View>
 
         <View style={styles.searchCategory}>
           <View style={styles.searchCategoryHeader}>
@@ -130,6 +141,13 @@ export function ModalFilter(props) {
             ))}
           </ScrollView>
         </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.label}>
+            <Ionicons
+              onPress={props.close}
+              name="ios-search" size={16} color="#EEE" />
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -139,17 +157,18 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: "rgba(32, 32, 36, .9)",
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height - 20,
+    height: Dimensions.get("window").height,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 20,
   },
   cardmodal: {
     width: "90%",
-    height: "85%",
+    height: "90%",
     borderRadius: 6,
     alignItems: "center",
     opacity: 0.995,
+    paddingBottom: 40
   },
   iconmodal: {
     padding: 10,
@@ -217,6 +236,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#29292E",
   },
   searchCategoryHeader: {
+    flexDirection: 'row',
+    justifyContent: "space-between",
+    alignItems: "center",
     height: 55,
     backgroundColor: "#202024",
     padding: 10,
@@ -273,5 +295,31 @@ const styles = StyleSheet.create({
   label: {
     color: "#ffffff",
     margin: 18,
+  },
+  link: {
+    color: "#ffffff",
+    textDecorationLine: "underline"
+  },
+  button: {
+    position: "absolute",
+    width: 80,
+    borderRadius: 100,
+    height: 80,
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#DE8F45',
+    zIndex: 5,
+    bottom: 0,
+    right: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
 });
