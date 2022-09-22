@@ -127,7 +127,7 @@ export default function SignIn() {
                     style={styles.textLink}>Esqueci minha senha
                 </Text>
             </TouchableOpacity>
-            <Text style={styles.texts}> Versão 0.9.0</Text>
+            <Text style={styles.texts}> Versão 1.0.1</Text>
         </View>
     )
 }

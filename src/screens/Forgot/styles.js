@@ -6,7 +6,7 @@ export default StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
         alignItems: 'center',
-        paddingVertical:20,
+        paddingVertical: 20,
         flex: 1,
     },
 
@@ -14,8 +14,8 @@ export default StyleSheet.create({
         marginTop: 20,
         marginBottom: 100,
     },
-    inputContainer:{
-        flexDirection:'row',
+    inputContainer: {
+        flexDirection: 'row',
         textAlign: 'center',
         justifyContent: 'center',
         marginLeft: -20
@@ -30,7 +30,7 @@ export default StyleSheet.create({
         fontFamily: 'Poppins_400Regular',
         fontSize: 12,
         padding: 50,
-},
+    },
     title: {
         fontFamily: 'Poppins_400Regular',
         fontSize: 20,
@@ -43,7 +43,7 @@ export default StyleSheet.create({
     texts: {
         fontFamily: 'Poppins_400Regular',
         color: 'white',
-        margin: 20,
+        margin: 18,
         fontSize: 12,
         textAlign: 'center'
     },
@@ -53,7 +53,7 @@ export default StyleSheet.create({
         width: '90%',
         height: 56,
         textAlign: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
         backgroundColor: '#2D9135',
         borderRadius: 6,
         shadowColor: "#000",
@@ -67,7 +67,7 @@ export default StyleSheet.create({
         elevation: 2,
     },
 
-    icon:{
+    icon: {
         translateX: 35,
         translateY: 10,
         zIndex: 2,

@@ -29,12 +29,12 @@ export function ModalFilter(props) {
           onPress={props.close}
         />
       </View>
-    
+
       <View style={styles.cardmodal}>
         <View style={styles.searchHeader}>
           <Text style={styles.searchHeaderText}>Filtrar por:</Text>
         </View>
-       
+
         <View style={styles.searchCategory}>
           <View style={styles.searchCategoryHeader}>
             <Text style={styles.searchCategoryText}>Categorias</Text>
@@ -147,10 +147,10 @@ export function ModalFilter(props) {
           <Text style={styles.label}>
             <Ionicons
 
-              name="ios-search" size={25} color="#EEE" />
+              name="ios-search" size={21} color="#EEE" />
           </Text>
         </TouchableOpacity>
-        
+
       </View>
     </View>
   );

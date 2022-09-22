@@ -2,7 +2,7 @@
   "expo": {
     "name": "find.Devs",
     "slug": "finddevs",
-    "version": "0.9.5",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -26,7 +26,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#121214"
       },
-      "package": "com.lucianoneo.finddevs"
+      "package": "com.teamrest.finddevs"
     },
     "web": {
       "favicon": "./assets/favicon.png"
