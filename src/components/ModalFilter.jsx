@@ -141,10 +141,12 @@ export function ModalFilter(props) {
             ))}
           </ScrollView>
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          onPress={props.close}
+          style={styles.button}>
           <Text style={styles.label}>
             <Ionicons
-              onPress={props.close}
+
               name="ios-search" size={16} color="#EEE" />
           </Text>
         </TouchableOpacity>
