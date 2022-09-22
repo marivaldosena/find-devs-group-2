@@ -26,7 +26,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#121214"
       },
-      "package": "com.teamrest.finddevs"
+      "package": "com.teamrest.finddevs",
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
