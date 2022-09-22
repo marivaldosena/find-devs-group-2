@@ -18,8 +18,8 @@ import { Header } from "../../components/Header";
 import { Auth } from "aws-amplify";
 import DevApi from "../../services/devApi";
 import { ModalDetails } from "../../components/ModalDetails";
+import { ModalFilter } from "../../components/ModalFilter";
 import { addLoggedUser } from "../../store/modules/user/reducer";
-// import { ModalSearch } from '../../components/ModalSearch';
 
 export default function Home() {
   const navigate = useNavigation().navigate;
@@ -29,6 +29,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [devs, setDevs] = useState();
   const [modalVisible, setModalVisible] = useState(false);
+  const [filterModalVisible, setFilterModalVisible] = useState(false);
   const [username, setUsername] = useState("Dev");
   const [selected, setSelected] = useState({
     id: "",
@@ -39,10 +40,13 @@ export default function Home() {
     photo: "",
     description: "",
   });
+  const [stackFilters, setStackFilters] = useState(() => new Set());
+  const [categoryFilters, setCategoryFilters] = useState(() => new Set());
+  const [stateFilters, setStateFilters] = useState(() => new Set());
 
-  async function getDevs(filter) {
+  async function getDevs(filters) {
     try {
-      const dev2 = await DevApi.listDevelopers(filter);
+      const dev2 = await DevApi.listDevelopers(filters);
       setDevs(dev2);
     } catch (error) {}
   }
@@ -62,11 +66,21 @@ export default function Home() {
   }, []);
 
   function handleSearch() {
-    const filter = {
-      type: "name",
-      value: search,
+    const filters = {
+      name: {
+        value: search,
+      },
+      stack: {
+        value: stackFilters,
+      },
+      category: {
+        value: categoryFilters,
+      },
+      state: {
+        value: stateFilters,
+      },
     };
-    getDevs(filter);
+    getDevs(filters);
     Keyboard.dismiss();
   }
 
@@ -94,12 +108,17 @@ export default function Home() {
                 placeholder="Digite para pesquisar... "
                 onChangeText={(value) => setSearch(value)}
               />
-              <View style={styles.icon}>
-                <Ionicons name="ios-search" size={16} color="#EEE" />
-              </View>
+              <TouchableOpacity onPress={handleSearch} disabled={loading ? true : false}>
+                <View style={styles.icon}>
+                  <Ionicons name="ios-search" size={16} color="#EEE" />
+                </View>
+              </TouchableOpacity>
             </View>
 
-            <TouchableOpacity onPress={handleSearch} disabled={loading ? true : false}>
+            <TouchableOpacity
+              onPress={() => setFilterModalVisible(true)}
+              disabled={loading ? true : false}
+            >
               <View>
                 <View style={styles.iconSearch}>
                   <Ionicons name="ios-arrow-forward" size={18} color="#EEE" />
@@ -119,9 +138,27 @@ export default function Home() {
           <Modal
             animationType="slide"
             transparent={true}
+            visible={filterModalVisible}
+            onRequestClose={() => {
+              setFilterModalVisible(!filterModalVisible);
+            }}
+          >
+            <ModalFilter
+              stackFilters={stackFilters}
+              categoryFilters={categoryFilters}
+              stateFilters={stateFilters}
+              setStackFilters={setStackFilters}
+              setCategoryFilters={setCategoryFilters}
+              setStateFilters={setStateFilters}
+              close={() => setFilterModalVisible(false)}
+            />
+          </Modal>
+          <Modal
+            animationType="slide"
+            transparent={true}
             visible={modalVisible}
             onRequestClose={() => {
-              setModalVisible(!modalVisible);
+              setFilterModalVisible(!modalVisible);
             }}
           >
             <ModalDetails
