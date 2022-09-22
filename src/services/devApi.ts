@@ -5,16 +5,37 @@ import categoryApi from "./categoryApi";
 import { ICategory, IDeveloper, IStack, IState } from "../entities/entities";
 
 export type filters = {
-  type: "name" | "category" | "stack" | "state";
-  value: string;
+  name: {
+    value: string;
+  };
+  stack: {
+    value: Set<string>;
+  };
+  category: {
+    value: Set<string>;
+  };
+  state: {
+    value: Set<string>;
+  };
 };
 
-const listDevelopers = async (filter?: filters): Promise<IDeveloper[]> => {
+const listDevelopers = async (filters?: filters): Promise<IDeveloper[]> => {
   try {
-    let query = "/devs";
+    let query = "/devs?";
 
-    if (filter) {
-      query = `${query}?${filter.type}_like=${filter.value}`;
+    if (filters) {
+      if (filters.name.value) {
+        query = `${query}name_like=${filters.name.value}`;
+      }
+      if (filters.stack.value.size > 0) {
+        query = `${query}&stack=${Array.from(filters.stack.value).join("&stack=")}`;
+      }
+      if (filters.category.value.size > 0) {
+        query = `${query}&category=${Array.from(filters.category.value).join("&category=")}`;
+      }
+      if (filters.state.value.size > 0) {
+        query = `${query}&state=${Array.from(filters.state.value).join("&state=")}`;
+      }
     }
 
     const response = await api.get(query);

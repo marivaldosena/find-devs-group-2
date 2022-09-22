@@ -40,10 +40,13 @@ export default function Home() {
     photo: "",
     description: "",
   });
+  const [stackFilters, setStackFilters] = useState(() => new Set());
+  const [categoryFilters, setCategoryFilters] = useState(() => new Set());
+  const [stateFilters, setStateFilters] = useState(() => new Set());
 
-  async function getDevs(filter) {
+  async function getDevs(filters) {
     try {
-      const dev2 = await DevApi.listDevelopers(filter);
+      const dev2 = await DevApi.listDevelopers(filters);
       setDevs(dev2);
     } catch (error) {}
   }
@@ -63,11 +66,21 @@ export default function Home() {
   }, []);
 
   function handleSearch() {
-    const filter = {
-      type: "name",
-      value: search,
+    const filters = {
+      name: {
+        value: search,
+      },
+      stack: {
+        value: stackFilters,
+      },
+      category: {
+        value: categoryFilters,
+      },
+      state: {
+        value: stateFilters,
+      },
     };
-    getDevs(filter);
+    getDevs(filters);
     Keyboard.dismiss();
   }
 
@@ -130,7 +143,15 @@ export default function Home() {
               setFilterModalVisible(!filterModalVisible);
             }}
           >
-            <ModalFilter close={() => setFilterModalVisible(false)} />
+            <ModalFilter
+              stackFilters={stackFilters}
+              categoryFilters={categoryFilters}
+              stateFilters={stateFilters}
+              setStackFilters={setStackFilters}
+              setCategoryFilters={setCategoryFilters}
+              setStateFilters={setStateFilters}
+              close={() => setFilterModalVisible(false)}
+            />
           </Modal>
           <Modal
             animationType="slide"

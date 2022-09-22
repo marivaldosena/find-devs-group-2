@@ -1,19 +1,22 @@
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { useEffect, useState } from "react";
+import { View, Text, StyleSheet, Dimensions, ScrollView } from "react-native";
 import { CheckBox } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
-import { useState, useEffect } from "react";
+
+import StackApi from "../services/stackApi";
+import CategoryApi from "../services/categoryApi";
+import StateApi from "../services/stateApi";
 
 export function ModalFilter(props) {
-  const [stackFilters, setStackFilters] = useState(new Set());
-  const [stack0Checked, setStack0Checked] = useState(false);
-  const [stack1Checked, setStack1Checked] = useState(false);
-  const [stack2Checked, setStack2Checked] = useState(false);
-  const [categoryFilters, setCategoryFilters] = useState(() => new Set());
-
+  const [stacks, setStacks] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [states, setStates] = useState([]);
 
   useEffect(() => {
-    console.log(categoryFilters)
-  }, [categoryFilters])
+    StackApi.listStacks().then((response) => setStacks(response));
+    CategoryApi.listCategories().then((response) => setCategories(response));
+    StateApi.listStates().then((response) => setStates(response));
+  }, []);
 
   return (
     <View style={styles.modal}>
@@ -33,161 +36,99 @@ export function ModalFilter(props) {
         </View>
 
         <View style={styles.searchCategory}>
-          <Text style={styles.searchCategoryText}>Category</Text>
-        </View>
-
-        <View style={styles.searchItemContainer}>
-          <View style={styles.searchItem}>
-            <CheckBox
-              value="0"
-              checked={stack0Checked}
-              onPress={() => {
-                if (stackFilters.has("0")) {
-                  setStackFilters((filters) => {
-                    filters.delete("0");
-                    return filters;
-                  });
-                  setStack0Checked(false);
-                } else {
-                  setStackFilters((filters) => filters.add("0"));
-                  setStack0Checked(true);
-                }
-              }}
-              style={styles.checkbox}
-            />
-            <Text style={styles.label}>Node.js</Text>
+          <View style={styles.searchCategoryHeader}>
+            <Text style={styles.searchCategoryText}>Stack de tecnologias</Text>
           </View>
-        </View>
 
-        <View style={styles.searchItemContainer}>
-          <View style={styles.searchItem}>
-            <CheckBox
-              value="1"
-              checked={stack1Checked}
-              onPress={() => {
-                if (stackFilters.has("1")) {
-                  setStackFilters((filters) => {
-                    filters.delete("1");
-                    return filters;
-                  });
-                  setStack1Checked(false);
-                } else {
-                  setStackFilters((filters) => filters.add("1"));
-                  setStack1Checked(true);
-                }
-              }}
-              style={styles.checkbox}
-            />
-            <Text style={styles.label}>ReactJS</Text>
-          </View>
-        </View>
-
-        <View style={styles.searchItemContainer}>
-          <View style={styles.searchItem}>
-            <CheckBox
-              value="2"
-              checked={stack2Checked}
-              onPress={() => {
-                if (stackFilters.has("2")) {
-                  setStackFilters((filters) => {
-                    filters.delete("2");
-                    return filters;
-                  });
-                  setStack2Checked(false);
-                } else {
-                  setStackFilters((filters) => filters.add("2"));
-                  setStack2Checked(true);
-                }
-              }}
-              style={styles.checkbox}
-            />
-            <Text style={styles.label}>React Native</Text>
-          </View>
+          <ScrollView style={styles.searchItemContainer}>
+            {stacks.map((stack) => (
+              <View key={stack.id}>
+                <View style={styles.searchItem}>
+                  <CheckBox
+                    value={stack.id}
+                    checked={props.stackFilters.has(stack.id)}
+                    onPress={() => {
+                      if (props.stackFilters.has(stack.id)) {
+                        props.setStackFilters((prev) => {
+                          const next = new Set(prev);
+                          next.delete(stack.id);
+                          return next;
+                        });
+                      } else {
+                        props.setStackFilters((prev) => new Set(prev).add(stack.id));
+                      }
+                    }}
+                    style={styles.checkbox}
+                  />
+                  <Text style={styles.label}>{stack.label}</Text>
+                </View>
+              </View>
+            ))}
+          </ScrollView>
         </View>
 
         <View style={styles.searchCategory}>
-          <Text style={styles.searchCategoryText}>Categoria</Text>
+          <View style={styles.searchCategoryHeader}>
+            <Text style={styles.searchCategoryText}>Categorias</Text>
+          </View>
+
+          <ScrollView style={styles.searchItemContainer}>
+            {categories.map((category) => (
+              <View key={category.id}>
+                <View style={styles.searchItem}>
+                  <CheckBox
+                    value={category.id}
+                    checked={props.categoryFilters.has(category.id)}
+                    onPress={() => {
+                      if (props.categoryFilters.has(category.id)) {
+                        props.setCategoryFilters((prev) => {
+                          const next = new Set(prev);
+                          next.delete(category.id);
+                          return next;
+                        });
+                      } else {
+                        props.setCategoryFilters((prev) => new Set(prev).add(category.id));
+                      }
+                    }}
+                    style={styles.checkbox}
+                  />
+                  <Text style={styles.label}>{category.name}</Text>
+                </View>
+              </View>
+            ))}
+          </ScrollView>
         </View>
 
-        <View style={styles.searchItemContainer}>
-          <View style={styles.searchItem}>
-            <CheckBox
-              value="0"
-              checked={categoryFilters.has("0")}
-              onPress={() => {
-                if (categoryFilters.has("0")) {
-                  setCategoryFilters(prev => {
-                    const next = new Set(prev);
-                    next.delete('0');
-                    return next;
-                  })
-                  return
-                }
-                else {
-                  setCategoryFilters(prev => new Set(prev).add('0'))
-                }
-
-              }
-
-              }
-              style={styles.checkbox}
-            />
-            <Text style={styles.label}>Front-end</Text>
+        <View style={styles.searchCategory}>
+          <View style={styles.searchCategoryHeader}>
+            <Text style={styles.searchCategoryText}>Estados</Text>
           </View>
-        </View>
 
-        <View style={styles.searchItemContainer}>
-          <View style={styles.searchItem}>
-            <CheckBox
-              value="1"
-              checked={categoryFilters.has("1")}
-              onPress={() => {
-                if (categoryFilters.has("1")) {
-                  setCategoryFilters(prev => {
-                    const next = new Set(prev);
-                    next.delete('1');
-                    return next;
-                  })
-                  return
-                }
-                else {
-                  setCategoryFilters(prev => new Set(prev).add('1'))
-                }
-
-              }
-
-              }
-              style={styles.checkbox}
-            />
-            <Text style={styles.label}>Back-end</Text>
-          </View>
-        </View>
-
-        <View style={styles.searchItemContainer}>
-          <View style={styles.searchItem}>
-            <CheckBox
-              value="2"
-              checked={categoryFilters.has("2")}
-              onPress={() => {
-                if (categoryFilters.has("2")) {
-                  setCategoryFilters(prev => {
-                    const next = new Set(prev);
-                    next.delete('2');
-                    return next;
-                  })
-                  return
-                }
-                else {
-                  setCategoryFilters(prev => new Set(prev).add('2'))
-                }
-
-              }
-
-              }
-              style={styles.checkbox}
-            />
-            <Text style={styles.label}>Mobile</Text>
-          </View>
+          <ScrollView style={styles.searchItemContainer}>
+            {states.map((state) => (
+              <View key={state.id}>
+                <View style={styles.searchItem}>
+                  <CheckBox
+                    value={state.id}
+                    checked={props.stateFilters.has(state.id)}
+                    onPress={() => {
+                      if (props.stateFilters.has(state.id)) {
+                        props.setStateFilters((prev) => {
+                          const next = new Set(prev);
+                          next.delete(state.id);
+                          return next;
+                        });
+                      } else {
+                        props.setStateFilters((prev) => new Set(prev).add(state.id));
+                      }
+                    }}
+                    style={styles.checkbox}
+                  />
+                  <Text style={styles.label}>{state.value}</Text>
+                </View>
+              </View>
+            ))}
+          </ScrollView>
         </View>
       </View>
     </View>
@@ -198,13 +139,12 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: "rgba(32, 32, 36, .9)",
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height - 20,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 20,
   },
   cardmodal: {
-    backgroundColor: "#29292E",
     width: "90%",
     height: "85%",
     borderRadius: 6,
@@ -272,6 +212,11 @@ const styles = StyleSheet.create({
     marginTop: 1,
   },
   searchCategory: {
+    width: "100%",
+    height: "33%",
+    backgroundColor: "#29292E",
+  },
+  searchCategoryHeader: {
     height: 55,
     backgroundColor: "#202024",
     padding: 10,
@@ -317,11 +262,13 @@ const styles = StyleSheet.create({
   },
   searchItemContainer: {
     alignSelf: "flex-start",
+    width: "100%",
     paddingBottom: 12,
     marginTop: -10,
   },
   checkbox: {
     alignSelf: "center",
+    marginTop: 0,
   },
   label: {
     color: "#ffffff",
