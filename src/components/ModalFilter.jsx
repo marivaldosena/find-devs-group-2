@@ -29,12 +29,12 @@ export function ModalFilter(props) {
           onPress={props.close}
         />
       </View>
-
+    
       <View style={styles.cardmodal}>
         <View style={styles.searchHeader}>
           <Text style={styles.searchHeaderText}>Filtrar por:</Text>
         </View>
-
+       
         <View style={styles.searchCategory}>
           <View style={styles.searchCategoryHeader}>
             <Text style={styles.searchCategoryText}>Categorias</Text>
@@ -147,9 +147,10 @@ export function ModalFilter(props) {
           <Text style={styles.label}>
             <Ionicons
 
-              name="ios-search" size={16} color="#EEE" />
+              name="ios-search" size={25} color="#EEE" />
           </Text>
         </TouchableOpacity>
+        
       </View>
     </View>
   );
@@ -159,10 +160,11 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: "rgba(32, 32, 36, .9)",
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height - 30,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 20,
+    borderRadius: 6,
   },
   cardmodal: {
     width: "90%",
@@ -236,6 +238,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "33%",
     backgroundColor: "#29292E",
+    borderRadius: 6,
   },
   searchCategoryHeader: {
     flexDirection: 'row',
@@ -289,6 +292,7 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingBottom: 12,
     marginTop: -10,
+    borderRadius: 6,
   },
   checkbox: {
     alignSelf: "center",
@@ -304,16 +308,16 @@ const styles = StyleSheet.create({
   },
   button: {
     position: "absolute",
-    width: 80,
+    width: 60,
     borderRadius: 100,
-    height: 80,
+    height: 60,
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#DE8F45',
     zIndex: 5,
-    bottom: 0,
-    right: 10,
+    bottom: 20,
+    right: 15,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -321,7 +325,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.20,
     shadowRadius: 1.41,
-
     elevation: 2,
   },
 });

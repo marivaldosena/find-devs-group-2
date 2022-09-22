@@ -172,12 +172,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     backgroundColor: "#121214",
     borderRadius: 6,
-    marginTop: 30,
+    marginTop: 20,
     justifyContent: "space-between",
     padding: 10,
     alignItems: "center",
     flexDirection: "row",
-    marginBottom: -10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

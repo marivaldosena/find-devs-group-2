@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, View, Modal } from "react-native";
+import { Text, View, Modal, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import { CardDev } from "../../components/CardDev";
 import { Header } from "../../components/Header";
@@ -55,6 +55,7 @@ export default function Favs() {
         />
       </Modal>
       <Header onpress="home" />
+    <ScrollView>
       <View style={styles.container}>
         <View style={styles.hello}>
           <Text style={styles.title}>Favoritos</Text>
@@ -86,6 +87,7 @@ export default function Favs() {
           />
         ))}
       </View>
+      </ScrollView>  
     </>
   );
 }
