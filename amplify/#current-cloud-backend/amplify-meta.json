@@ -1,0 +1,60 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-finddevtest2-dev-205948-authRole",
+      "UnauthRoleArn": "arn:aws:iam::184436697717:role/amplify-finddevtest2-dev-205948-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::184436697717:role/amplify-finddevtest2-dev-205948-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-finddevtest2-dev-205948-deployment",
+      "UnauthRoleName": "amplify-finddevtest2-dev-205948-unauthRole",
+      "StackName": "amplify-finddevtest2-dev-205948",
+      "StackId": "arn:aws:cloudformation:us-west-1:184436697717:stack/amplify-finddevtest2-dev-205948/24bd68d0-3877-11ed-98af-02e3c63c6a5f",
+      "AmplifyAppId": "d353tvmmcvse82"
+    }
+  },
+  "auth": {
+    "finddevtest22482c06c": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [
+          "GOOGLE"
+        ],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-finddevtest2-dev-205948-deployment/amplify-cfn-templates/auth/finddevtest22482c06c-cloudformation-template.json",
+        "logicalId": "authfinddevtest22482c06c"
+      },
+      "lastPushTimeStamp": "2022-09-20T00:07:14.681Z",
+      "output": {
+        "UserPoolId": "us-west-1_SP2iekUse",
+        "AppClientIDWeb": "5f0q5l2doqui2tpe54o90s1rgv",
+        "AppClientID": "165dnr2jtth920tli60s6hdnf",
+        "HostedUIDomain": "finddevs2-dev",
+        "IdentityPoolId": "us-west-1:1c32321e-a2b4-4b0a-bac2-9dca5f30d71c",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-1:184436697717:userpool/us-west-1_SP2iekUse",
+        "IdentityPoolName": "finddevtest22482c06c_identitypool_2482c06c__dev",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"finddevs://\"],\"LogoutURLs\":[\"finddevs://\"]}",
+        "UserPoolName": "finddevtest22482c06c_userpool_2482c06c"
+      },
+      "lastPushDirHash": "1OA00qQPlrn9Lg4PY+Cpcte170Y="
+    }
+  }
+}

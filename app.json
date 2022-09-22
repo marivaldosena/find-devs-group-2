@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "find-devs-group-2",
-    "slug": "find-devs-group-2",
-    "version": "1.0.0",
+    "name": "find.Devs",
+    "slug": "finddevs",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "finddevs",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#121214"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,11 +24,18 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#121214"
+      },
+      "package": "com.teamrest.finddevs",
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "63d6555e-5b42-4c78-9c25-5c66c563259c"
+      }
     }
   }
 }
