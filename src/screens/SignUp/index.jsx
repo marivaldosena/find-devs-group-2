@@ -30,7 +30,7 @@ export default function SignUp() {
                 password,
                 attributes: { email, name, preferred_username: username }
             })
-            Alert.alert('Código de verificação', 'Veririque o código de confirmação no seu email cadastrado!')
+            Alert.alert('Código de verificação', 'Verifique o código de confirmação no seu email cadastrado!')
             navigate('ConfirmEmail')
 
         } catch (error) {
@@ -41,77 +41,77 @@ export default function SignUp() {
 
     return (
         <>
-        <HeaderSignIn/>
-        <View style={styles.container}>
-            
-            <Text style={styles.title}>Faça seu cadastro!</Text>
-            <View style={styles.form}>
+            <HeaderSignIn />
+            <View style={styles.container}>
 
-                <View style={styles.inputContainer}>
-                    <View style={styles.icon}>
-                        <Ionicons name="happy-outline" size={24} color="#EEE" />
-                    </View>
-                    <TextInput
-                        autoCompleteType='off'
-                        style={styles.inputs}
-                        placeholderTextColor='#EEE'
-                        placeholder='Nome'
-                        onChangeText={value => setName(value)}
-                    />
-                </View>
+                <Text style={styles.title}>Faça seu cadastro!</Text>
+                <View style={styles.form}>
 
-                <View style={styles.inputContainer}>
-                    <View style={styles.icon}>
-                        <FontAwesome5
-                            name="user" size={24} color="#EEE" />
+                    <View style={styles.inputContainer}>
+                        <View style={styles.icon}>
+                            <Ionicons name="happy-outline" size={24} color="#EEE" />
+                        </View>
+                        <TextInput
+                            autoCompleteType='off'
+                            style={styles.inputs}
+                            placeholderTextColor='#EEE'
+                            placeholder='Nome'
+                            onChangeText={value => setName(value)}
+                        />
                     </View>
-                    <TextInput
-                        autoCompleteType='off'
-                        style={styles.inputs}
-                        placeholderTextColor='#EEE'
-                        placeholder='Usuário'
-                        onChangeText={value => setUser(value)}
-                    />
-                </View>
 
-                <View style={styles.inputContainer}>
-                    <View style={styles.icon}>
-                        <MaterialIcons name="email" size={24} color="#EEE" />
+                    <View style={styles.inputContainer}>
+                        <View style={styles.icon}>
+                            <FontAwesome5
+                                name="user" size={24} color="#EEE" />
+                        </View>
+                        <TextInput
+                            autoCompleteType='off'
+                            style={styles.inputs}
+                            placeholderTextColor='#EEE'
+                            placeholder='Usuário'
+                            onChangeText={value => setUser(value)}
+                        />
                     </View>
-                    <TextInput
-                        autoCompleteType='off'
-                        style={styles.inputs}
-                        placeholderTextColor='#EEE'
-                        placeholder='E-mail'
-                        onChangeText={value => setEmail(value)}
-                    />
-                </View>
 
-                <View style={styles.inputContainer}>
-                    <View style={styles.icon}>
-                        <Ionicons name="ios-key-sharp" size={24} color="#EEE" />
+                    <View style={styles.inputContainer}>
+                        <View style={styles.icon}>
+                            <MaterialIcons name="email" size={24} color="#EEE" />
+                        </View>
+                        <TextInput
+                            autoCompleteType='off'
+                            style={styles.inputs}
+                            placeholderTextColor='#EEE'
+                            placeholder='E-mail'
+                            onChangeText={value => setEmail(value)}
+                        />
                     </View>
-                    <TextInput
-                        autoCompleteType='off'
-                        style={styles.inputs}
-                        placeholderTextColor='#EEE'
-                        placeholder='Senha'
-                        onChangeText={value => setPassword(value)}
-                        secureTextEntry={true}
-                    />
+
+                    <View style={styles.inputContainer}>
+                        <View style={styles.icon}>
+                            <Ionicons name="ios-key-sharp" size={24} color="#EEE" />
+                        </View>
+                        <TextInput
+                            autoCompleteType='off'
+                            style={styles.inputs}
+                            placeholderTextColor='#EEE'
+                            placeholder='Senha'
+                            onChangeText={value => setPassword(value)}
+                            secureTextEntry={true}
+                        />
+                    </View>
                 </View>
+                <TouchableOpacity
+                    onPress={() => onSignUpPress()}
+                    disabled={loading ? true : false}
+                    style={styles.buttons}
+                >
+                    <Text style={styles.texts}>
+                        {loading ? 'Carregando...' : 'Cadastrar'}
+                    </Text>
+                </TouchableOpacity>
+
             </View>
-            <TouchableOpacity
-                onPress={() => onSignUpPress()}
-                disabled={loading ? true : false}
-                style={styles.buttons}
-            >
-                <Text style={styles.texts}>
-                    {loading ? 'Carregando...' : 'Cadastrar'}
-                </Text>
-            </TouchableOpacity>
-            
-        </View>
         </>
     )
 }
