@@ -2,7 +2,7 @@
   "expo": {
     "name": "find.Devs",
     "slug": "finddevs",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -27,7 +27,11 @@
         "backgroundColor": "#121214"
       },
       "package": "com.teamrest.finddevs",
-      "permissions": []
+      "blockedPermissions": [
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
