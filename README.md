@@ -12,6 +12,22 @@
 
 <!-- Content -->
 
+[favorites-screen-image]: ./readme/favorites-screen.jpg
+[filtered-devs-image]: ./readme/filtered-devs.jpg
+[filtering-image]: ./readme/filtering.jpg
+[forgot-password-screen-image]: ./readme/forgot-password-screen.jpg
+[initial-page-image]: ./readme/initial-page.jpg
+[login-screen-image]: ./readme/login-screen.jpg
+[login-validation-image]: ./readme/login-validation.jpg
+[saving-favorite-image]: ./readme/saving-favorite.jpg
+[social-login-image]: ./readme/social-login.jpg
+[splash-screen-image]: ./readme/splash-screen.jpg
+[token-sent-image]: ./readme/token-sent.jpg
+[token-validation-image]: ./readme/token-validation.jpg
+[user-registration-image]: ./readme/user-registration.jpg
+[demonstration-video]: ./readme/demonstration.mp4
+
+
 # find-devs-group-2
 
 [![Gama Academy][gama-academy-badge]][devfortech-url]
@@ -65,3 +81,97 @@ Os membros da equipe de desenvolvimento são:
 - [Alison Lima](https://github.com/alisonglima)
 - [Luciano dos Santos Bueno](https://github.com/Lucianoneo)
 - [Marivaldo Sena](https://github.com/marivaldosena)
+
+# Telas
+
+Abaixo estão as telas desenvolvidas do aplicativo.
+
+## Tela de Carregamento
+
+A tela de carregamento ou Splash Screen é a tela visualizada durante o carregamento da aplicação e antes da interação do usuário propriamente dita.
+
+![Tela de carregamento][splash-screen-image]
+
+## Login
+
+Permite ao usuário acessar o aplicativo.
+
+![Tela de login][login-screen-image]
+
+## Cadastro
+
+Permite que pessoas possam se registrarem no sistema a partir de usuário, e-mail e senha.
+
+![Tela de cadastro][user-registration-image]
+
+## Validacao de Usuario
+
+Abaixo um exemplo de validação de acesso onde o aplicativo nos obriga a fornecer e-mail e senha.
+
+![Validação de acesso][login-validation-image]
+
+## Token de Acesso
+
+Após o cadastro, recebemos um token de acesso para garantir o uso de e-mail válido.
+
+Envio de token:
+
+![Envio de token][token-sent-image]
+
+Validação de usuário:
+
+![Validação de token][token-validation-image]
+
+## Recuperação de Senha
+
+Há a funcionalidade de recuperação de senha onde devemos fornecer nosso e-mail e usuário para receber o token em nosso e-mail.
+
+![Recuperação de senha][forgot-password-screen-image]
+
+## Login Social
+
+É possível acessar o aplicativo usando o Single Sign-on (SSO), ou seja, login social do Google neste exemplo.
+
+![Login social][social-login-image]
+
+## Tela Inicial
+
+A tela inicial é a tela que surge após o acesso com êxito. Nesta tela há uma lista com desenvolvedores disponíveis, mecanismo de busca e opção de filtro por categorias.
+
+![Tela inicial][initial-page-image]
+
+## Filtrar Desenvolvedores
+
+É possível filtrar pessoas usando critérios. Os possíveis critérios são:
+
+- Categoria - que é subdivida em Frontend, Backend e Full Stack.
+- Estado - estão previstos os 26 Estados e o Distrito Federal.
+- Stack - as tecnologias principais, tais como: React Native, Java, Angular, etc.
+
+![Filtro de desenvolvedores][filtering-image]
+
+## Filtro Aplicado
+
+Abaixo um exemplo do filtro aplicado usando os critérios citados acima.
+
+![Filtro aplicado][filtered-devs-image]
+
+## Salvar Favoritos
+
+Ao clicar no desenvolvedor surge uma tela para favoritá-lo. Após isso, os favoritos estão em uma tela à parte.
+
+![Salvar favoritos][saving-favorite-image]
+
+## Lista de Favoritos
+
+Abaixo um exemplo de tela com todos os favoritos apresentados em forma de lista.
+
+![Salvar favoritos][favorites-screen-image]
+
+# Video de Demonstracao
+
+O vídeo abaixo mostra as funcionalidades descritas acima.
+
+<video width="600" height="600" controls>
+  <source src="./readme/demonstration.mp4" type="video/mp4">
+</video>
